@@ -39,7 +39,7 @@ export default function FeaturedStartups() {
     return (
         <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-lowest">
             <div className="max-w-max_width mx-auto">
-                <div className="flex justify-between items-end mb-16">
+                <div className="flex justify-between items-end mb-10">
                     <div className="space-y-4">
                         <span className="font-label-caps text-label-caps text-primary uppercase tracking-widest">
                             Featured Profiles

@@ -26,8 +26,8 @@ export default function Hero() {
                         decks, and connect with a world-class mentor and investor network.
                     </p>
                     <div className="flex flex-wrap gap-4 pt-4">
-                        <Button variant="primary" className="px-8 py-4 rounded-[14px]">Create Startup</Button>
-                        <Button variant="secondary" className="px-8 py-4 rounded-[14px]">Explore Startups</Button>
+                        <Button variant="primary" className="px-8 py-3 rounded-[14px]">Create Startup</Button>
+                        <Button variant="secondary" className="px-8 py-3 rounded-[14px]">Explore Startups</Button>
                     </div>
                 </motion.div>
 
@@ -37,7 +37,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.15 }}
                     className="col-span-12 lg:col-span-6 mt-12 lg:mt-0 relative"
                 >
-                    <div className="bg-surface-container-lowest border border-outline-variant rounded-[20px] p-6 shadow-editorial rotate-1 scale-105">
+                    <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-editorial rotate-1 scale-100">
                         <div className="flex items-center justify-between mb-8">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-primary/10 center text-primary">

@@ -55,11 +55,11 @@
   --radius-full: 9999px;
 
   --spacing-max_width: 1280px;
-  --spacing-nav_height: 72px;
+  --spacing-nav_height: 70px;
   --spacing-margin_desktop: 40px;
   --spacing-margin_mobile: 16px;
-  --spacing-section_gap: 120px;
-  --spacing-gutter: 24px;
+  --spacing-section_gap: 80px;
+  --spacing-gutter: 30px;
   --spacing-base: 8px;
 
   --font-numeric-data: "IBM Plex Sans", sans-serif;

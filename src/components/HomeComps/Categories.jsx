@@ -12,7 +12,7 @@ export default function Categories() {
     return (
         <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
             <div className="max-w-max_width mx-auto">
-                <div className="text-center mb-20">
+                <div className="text-center mb-10">
                     <h2 className="font-headline-lg text-headline-lg mb-4">Focused on High-Impact Industries</h2>
                     <p className="font-body-md text-body-md text-on-surface-variant">
                         A ecosystem tailored for the most demanding tech verticals.

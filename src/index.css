@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+
 
 @theme {
   --color-on-tertiary: #ffffff;
@@ -58,8 +65,8 @@
   --spacing-nav_height: 70px;
   --spacing-margin_desktop: 40px;
   --spacing-margin_mobile: 16px;
-  --spacing-section_gap: 80px;
-  --spacing-gutter: 30px;
+  --spacing-section_gap: 50px;
+  --spacing-gutter: 10px;
   --spacing-base: 8px;
 
   --font-numeric-data: "IBM Plex Sans", sans-serif;

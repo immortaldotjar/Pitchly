@@ -7,15 +7,14 @@ const categories = [
     { icon: MdEco, title: "GreenTech", desc: "Sustainable solutions for a global future." },
     { icon: MdPayments, title: "FinTech", desc: "Modernizing the movement of global capital." },
 ];
-
-export default function Categories() {
+const Categories = () => {
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
+        <div className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-lowest">
             <div className="max-w-max_width mx-auto">
                 <div className="text-center mb-10">
                     <h2 className="font-headline-lg text-headline-lg mb-4">Focused on High-Impact Industries</h2>
                     <p className="font-body-md text-body-md text-on-surface-variant">
-                        A ecosystem tailored for the most demanding tech verticals.
+                        An ecosystem tailored for the most demanding tech verticals.
                     </p>
                 </div>
 
@@ -24,7 +23,7 @@ export default function Categories() {
                         <motion.div
                             key={cat.title}
                             whileHover={{ y: -4 }}
-                            className="p-8 border border-outline-variant rounded-2xl hover:border-primary transition-colors cursor-pointer group"
+                            className="p-8 border border-outline-variant rounded-lg hover:border-primary transition-colors cursor-pointer group"
                         >
                             <cat.icon className="text-4xl text-on-surface-variant group-hover:text-primary mb-6" />
                             <h4 className="font-headline-md text-body-lg font-bold mb-2">{cat.title}</h4>
@@ -33,6 +32,8 @@ export default function Categories() {
                     ))}
                 </div>
             </div>
-        </section>
-    );
+        </div>
+    )
 }
+
+export default Categories

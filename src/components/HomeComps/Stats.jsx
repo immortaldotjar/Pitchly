@@ -8,9 +8,9 @@ const stats = [
 
 export default function Stats() {
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
+        <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-lowest">
             <div className="max-w-max_width mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                <div className="grid grid-cols-1 justify-around md:flex gap-12 text-center md:text-left">
                     {stats.map((stat, i) => (
                         <motion.div
                             key={stat.label}
@@ -18,7 +18,7 @@ export default function Stats() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className="space-y-2 border-l-4 border-primary pl-8"
+                            className="space-y-2 border-l-4 border-primary pl-10"
                         >
                             <h3 className="font-numeric-data text-[56px] leading-none text-primary">{stat.value}</h3>
                             <p className="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">

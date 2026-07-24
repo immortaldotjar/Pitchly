@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { MdMenu, MdClose } from "react-icons/md";
 
 const navLinks = [
-    { label: "Explore", slug: "explore", href: "/explore" },
+    { label: "Home", slug: "explore", href: "/" },
     { label: "Features", slug: "features", href: "/features" },
     { label: "Community", slug: "community", href: "/community" },
     { label: "About", slug: "about", href: "/about" },
@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function NavBar() {
 
-    const [active, setActive] = useState("Explore")
+    const [active, setActive] = useState("Home")
     const [open, setOpen] = useState(false);
     const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 h-nav_height z-100 backdrop-blur-md bg-surface/80 border-b border-outline-variant flex items-center px-margin_mobile md:px-margin_desktop">
+        <nav className="fixed top-0 left-0 right-0 h-nav_height z-50 backdrop-blur-md bg-surface/80 border-b border-outline-variant flex items-center px-margin_mobile md:px-margin_desktop">
             <ul className="max-w-max_width w-full mx-auto flex items-center justify-between">
                 <li className="flex items-center gap-12">
                     <span className="font-headline-md text-headline-md font-bold text-primary center gap-3">

@@ -51,7 +51,7 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
+        <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-lowest">
             <div className="max-w-3xl mx-auto">
                 <h2 className="font-headline-lg text-headline-lg text-center mb-16">Common Questions</h2>
                 <div className="space-y-4">

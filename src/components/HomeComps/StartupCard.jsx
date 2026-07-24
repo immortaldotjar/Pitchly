@@ -5,7 +5,7 @@ export default function StartupCard({ image, tags, name, description, avatars, f
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="group bg-surface border border-outline-variant rounded-[20px] overflow-hidden hover:shadow-editorial transition-shadow duration-300"
+      className="group bg-surface border border-outline-variant rounded-lg overflow-hidden hover:shadow-editorial transition-shadow duration-300"
     >
       <div className="h-48 relative overflow-hidden">
         <img
@@ -17,7 +17,7 @@ export default function StartupCard({ image, tags, name, description, avatars, f
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-white/90 backdrop-blur rounded-full font-label-caps text-[10px] text-on-surface font-bold"
+              className="px-3 py-1 bg-white/90 backdrop-blur rounded font-label-caps text-xs text-on-surface font-bold"
             >
               {tag}
             </span>

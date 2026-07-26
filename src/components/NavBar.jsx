@@ -47,8 +47,8 @@ export default function NavBar() {
                 </li>
 
                 <li className="hidden md:flex items-center gap-4">
-                    <Button variant="ghost" className="px-6 py-2">Sign In</Button>
-                    <Button variant="primary" className="px-6 py-2">Create Account</Button>
+                    <Button variant="ghost" className="px-6 py-2" onClick = {() => {navigate("/auth/signin")}}>Sign In</Button>
+                    <Button variant="primary" className="px-6 py-2" onClick = {() => {navigate("/auth/signup")}}>Create Account</Button>
                 </li>
 
                 <button

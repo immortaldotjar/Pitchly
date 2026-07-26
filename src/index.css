@@ -112,6 +112,11 @@
   --text-body-sm: 14px;
   --text-body-sm--line-height: 20px;
   --text-body-sm--font-weight: 400;
+
+
+  --color-dark-background:#1A202C;
+  --color-dark-surface:#2D3748;
+  --color-dark-text:#E2E8F0;
 }
 
 @utility shadow-editorial {
@@ -133,3 +138,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+

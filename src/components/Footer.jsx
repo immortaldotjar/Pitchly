@@ -1,9 +1,20 @@
 import { MdShare, MdRssFeed } from "react-icons/md";
+import { useNavigate } from "react-router";
 
 const platformLinks = ["Explore", "Insights", "Pitch Deck Tool", "Success Stories"];
 const companyLinks = ["About Us", "Careers", "Contact", "Press"];
 
 export default function Footer() {
+
+    const navigate = useNavigate()
+
+    const handleTos = () => {
+        window.open("/TermsOfService", "_blank");
+    };
+
+    const handlePolicy = () => {
+        window.open("/PrivacyPolicy", "_blank");
+    };
     return (
         <footer className="bg-on-background text-white pt-24 pb-12 px-margin_mobile md:px-margin_desktop">
             <div className="max-w-max_width mx-auto">
@@ -60,11 +71,11 @@ export default function Footer() {
                 </div>
 
                 <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <p className="font-body-sm text-xs opacity-40">© 2024 Pitchly Inc. All rights reserved.</p>
+                    <p className="font-body-sm text-xs opacity-40">© 2026 Pitchly Inc. All rights reserved.</p>
                     <div className="flex gap-8 opacity-40 font-body-sm text-xs">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Cookie Settings</a>
+                        <p className = "cursor-pointer" onClick={handlePolicy}>Privacy Policy</p>
+                        <p className = "cursor-pointer" onClick={handleTos}>Terms of Service</p>
+                        
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { MdRocketLaunch } from "react-icons/md";
 import Button from "./Button";
-import chartImg from "D:/Pitchly/client/src/assets/chart.png"
+import chartImg from "../../assets/chart.png"
 
 const heroStats = [
     { label: "FUNDING", value: "$4.2M" },

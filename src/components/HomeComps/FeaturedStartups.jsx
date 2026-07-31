@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { MdArrowForward } from "react-icons/md";
 import StartupCard from "./StartupCard";
-
+import featuredBg from "../../assets/hero_bg2.png"
 const startups = [
     {
         name: "NeuralFlow",
@@ -37,7 +37,7 @@ const startups = [
 
 export default function FeaturedStartups() {
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
+        <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-no-repeat bg-center bg-cover" style={{backgroundImage : `url(${featuredBg})`}}>
             <div className="max-w-max_width mx-auto">
                 <div className="flex justify-between items-end mb-10">
                     <div className="space-y-4">

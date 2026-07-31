@@ -55,9 +55,11 @@ export default function Hero() {
                                     <p className="font-body-sm text-body-sm text-on-surface-variant">Series A - Biotech</p>
                                 </div>
                             </div>
-                            <span className="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full font-label-caps text-label-caps group-hover:translate-x-6 transition duration-200 group-hover:shadow-[-1px_1px_0px_0px_rgba(0,0,0,0.6)]">
+
+                            <span className="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full font-label-caps text-label-caps group-hover:translate-x-1 transition duration-200 group-hover:shadow-[-1px_1px_0px_0px_rgba(0,0,0,0.6)]">
                                 Hiring
                             </span>
+
                         </div>
 
                         <div className="space-y-6">
@@ -70,9 +72,9 @@ export default function Hero() {
 
                             <div className="grid grid-cols-3 gap-4">
                                 {heroStats.map((stat) => (
-                                    
-                                    
-                                    <div key={stat.label} className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20 backdrop-blur-2xl group-hover:translate-x-10 transition duration-300 group-hover:shadow-[-1px_1px_0px_0px_rgba(0,0,0,0.6)]">
+
+
+                                    <div key={stat.label} className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20 backdrop-blur-2xl group-hover:translate-x-1 transition duration-300 group-hover:shadow-[-1px_1px_0px_0px_rgba(0,0,0,0.6)]">
                                         <p className="font-label-caps text-label-caps text-on-surface-variant group-hover:translate-x-2 transition group-hover:drop-shadow-[-1px_1px_0px_rgba(0,0,0,.2)]">{stat.label}</p>
                                         <p className={`font-bold  font-numeric-data md:text-headline-md text-primary group-hover:translate-x-2 transition group-hover:drop-shadow-[-1px_1px_0px_rgba(0,0,0,.2)]`}>{stat.value}</p>
                                     </div>
@@ -80,12 +82,12 @@ export default function Hero() {
                             </div>
 
                             <div
-                                className="w-full h-full bg-contain bg-center rounded-xl  "> 
+                                className="w-full h-full bg-contain bg-center rounded-xl  ">
                                 <img src={chartImg} alt="Chart_Image" className={`w-full h-full 
                                     transition duration-400
-                                    group-hover:translate-x-14 
+                                    group-hover:translate-x-1
                                     filter 
-                                    group-hover:filter-[drop-shadow(-1px_1px_0_rgba(0,0,0,0.5))_drop-shadow(-2px_2px_0_rgba(0,0,0,0.3))]`}
+                                    group-hover:filter-[drop-shadow(-1px_1px_0_rgba(0,0,0,0.6))]`}
                                 />
                             </div>
                         </div>

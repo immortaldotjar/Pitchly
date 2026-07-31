@@ -8,7 +8,7 @@ import CommunityCTA from "../components/CommunityComps/CommunityCTA";
 const Community = () => {
   return (
     <div className="bg-background text-on-background selection:bg-primary-container selection:text-on-primary">
-      <div className="pt-[72px]">
+      <div className="pt-nav_height">
         <CommunityHero />
         <CommunityStats />
         <Stories />

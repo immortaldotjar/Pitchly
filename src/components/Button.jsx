@@ -16,7 +16,7 @@ export default function Button({
   return (
     <motion.button
       whileTap={{ scale: 0.98 }}
-      className={`px-6 py-3 rounded-lg font-body-sm text-body-sm font-semibold transition-colors duration-150 ${variants[variant]} ${className}`}
+      className={`px-6 py-3 rounded-lg font-body-sm md:text-body-sm font-semibold transition-colors duration-150 ${variants[variant]} ${className}`}
       {...props}
     >
       {children}

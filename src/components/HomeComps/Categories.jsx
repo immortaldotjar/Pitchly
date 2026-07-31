@@ -1,11 +1,13 @@
 import { motion } from "motion/react";
-import { MdMonitorHeart, MdMemory, MdEco, MdPayments } from "react-icons/md";
-
+import { MdEco as GreenTechIcon }  from "react-icons/md"
+import { TbHealthRecognition as HealthTechIcon } from "react-icons/tb";
+import { HiOutlineCpuChip as DeepTechIcon } from "react-icons/hi2";
+import { GiReceiveMoney as FinTechIcon } from "react-icons/gi";
 const categories = [
-    { icon: MdMonitorHeart, title: "HealthTech", desc: "Revolutionizing patient outcomes through data." },
-    { icon: MdMemory, title: "DeepTech", desc: "Building the foundational tech of tomorrow." },
-    { icon: MdEco, title: "GreenTech", desc: "Sustainable solutions for a global future." },
-    { icon: MdPayments, title: "FinTech", desc: "Modernizing the movement of global capital." },
+    { icon: HealthTechIcon, title: "HealthTech", desc: "Revolutionizing patient outcomes through data." },
+    { icon: DeepTechIcon, title: "DeepTech", desc: "Building the foundational tech of tomorrow." },
+    { icon: GreenTechIcon, title: "GreenTech", desc: "Sustainable solutions for a global future." },
+    { icon: FinTechIcon, title: "FinTech", desc: "Modernizing the movement of global capital." },
 ];
 const Categories = () => {
     return (

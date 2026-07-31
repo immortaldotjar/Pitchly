@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { MdMenu, MdClose } from "react-icons/md";
 
 const navLinks = [
-    { label: "Home", slug: "explore", href: "/" },
+    { label: "Home", slug: "home", href: "/" },
     { label: "Features", slug: "features", href: "/features" },
     { label: "Community", slug: "community", href: "/community" },
     { label: "About", slug: "about", href: "/about" },
@@ -47,8 +47,8 @@ export default function NavBar() {
                 </li>
 
                 <li className="hidden md:flex items-center gap-4">
-                    <Button variant="ghost" className="px-6 py-2" onClick = {() => {navigate("/auth/signin")}}>Sign In</Button>
-                    <Button variant="primary" className="px-6 py-2" onClick = {() => {navigate("/auth/signup")}}>Create Account</Button>
+                    <Button variant="ghost" className="px-6 py-2" onClick={() => { navigate("/auth/signin") }}>Sign In</Button>
+                    <Button variant="primary" className="px-6 py-2" onClick={() => { navigate("/auth/signup") }}>Create Account</Button>
                 </li>
 
                 <button
@@ -70,14 +70,22 @@ export default function NavBar() {
                         {navLinks.map((link) => (
                             <li
                                 key={link.label}
-                                onClick={() => { handleClick(link); setOpen(false); }}
-                                className="font-body-sm text-body-sm text-on-surface-variant cursor-pointer"
+                                onClick={() => { setActive(link.label), navigate(link.href) }}
+
+                                className={`${
+                                    link.label == active
+                                        ? "font-body-sm text-body-sm text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer"
+                                        : "font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-150 cursor-pointer"
+                                } text-center`}
                             >
                                 {link.label}
                             </li>
                         ))}
-                        <Button variant="ghost" >Sign In</Button>
-                        <Button variant="primary" >Create Account</Button>
+                        <li className="flex flex-col justify-center gap-4">
+                            <Button variant="secondary" className="px-6 py-2 " onClick={() => { navigate("/auth/signin") }}>Sign In</Button>
+                            <Button variant="primary" className="px-6 py-2" onClick={() => { navigate("/auth/signup") }}>Create Account</Button>
+                        </li>
+
                     </motion.ul>
                 )}
             </AnimatePresence>

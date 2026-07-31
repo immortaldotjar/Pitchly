@@ -48,7 +48,7 @@ function AccordionItem({ q, a, isOpen, onClick }) {
 }
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState(null);
+    const [open, setOpen] = useState(null);
 
     return (
         <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-lowest">
@@ -60,8 +60,8 @@ export default function FAQ() {
                             key={faq.q}
                             q={faq.q}
                             a={faq.a}
-                            isOpen={openIndex === i}
-                            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                            isOpen={open === i}
+                            onClick={() => setOpen(open === i ? null : i)}
                         />
                     ))}
                 </div>

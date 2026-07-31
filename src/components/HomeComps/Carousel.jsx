@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion'; // Use 'motion/react' if using Motion 12+
+import { motion, useMotionValue, useTransform } from 'framer-motion'; 
 import { FiCode, FiHeart, FiMessageSquare, FiStar, FiUserCheck } from 'react-icons/fi';
-
+import testimonialBg from "../../assets/testimonialBg.png"
+import { style } from 'motion/react-client';
 const Items = [
   {
     title: 'Sarah Johnson',
@@ -38,7 +39,7 @@ const Items = [
 const DRAG_BUFFER = 10;
 const VELOCITY_THRESHOLD = 300;
 const GAP = 16;
-const PADDING = 16; // 16px (p-4) on each side of container = 32px total horizontal padding
+const PADDING = 16; 
 const SPRING_OPTIONS = { type: 'spring', stiffness: 300, damping: 30 };
 
 function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, transition }) {
@@ -87,7 +88,6 @@ export default function Carousel({
   const containerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
-  // Measure the exact width of the carousel container dynamically
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -104,7 +104,6 @@ export default function Carousel({
     return () => observer.disconnect();
   }, []);
 
-  // Compute item width to match full container width (minus padding) so only 1 card is visible
   const itemWidth = useMemo(() => {
     if (!containerWidth) return 0;
     return containerWidth - PADDING * 2;
@@ -216,9 +215,9 @@ export default function Carousel({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full mx-auto max-w-xl overflow-hidden p-4 ${
+      className={`relative w-full mx-auto max-w-xl overflow-hidden p-4  ${
         round ? 'rounded-full' : 'rounded-2xl bg-primary/5'
-      }`}
+      }` } 
     >
       {itemWidth > 0 && (
         <motion.div

@@ -2,12 +2,12 @@
 import Hero from "../components/HomeComps/Hero";
 import FeaturedStartups from "../components/HomeComps/FeaturedStartups";
 import Categories from "../components/HomeComps/Categories";
-import HowItWorks from "../components/HomeComps/HowItWorks";
+
 import Stats from "../components/HomeComps/Stats";
-import TestimonialSlide, { testimonials } from "../components/HomeComps/Testimonial";
+import testimonialBg from "../assets/testimonialBg.png"
 import FAQ from "../components/HomeComps/FAQ";
-import Carousel from "../components/Carousel";
-export default function Home() {
+import Carousel from "../components/HomeComps/Carousel";
+const Home = () => {
     return (
         <div className="bg-background text-on-background selection:bg-primary-container selection:text-on-primary">
 
@@ -22,7 +22,7 @@ export default function Home() {
                     <TestimonialSlide key={t.name} {...t} />
                 ))} */}
 
-                <div className = "max-h-fit relative md:p-margin_desktop p-margin_mobile">
+                <div className = "max-h-fit relative md:p-margin_desktop p-margin_mobile bg-center bg-cover bg-no-repeat" style={{backgroundImage : `url(${testimonialBg})`}}>
                     <Carousel
                         baseWidth={300}
                         autoplay={true}
@@ -38,3 +38,5 @@ export default function Home() {
         </div>
     );
 }
+
+export default Home

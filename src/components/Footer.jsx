@@ -34,6 +34,7 @@ export default function Footer() {
                         </div>
                     </div>
 
+                    
                     <div className="md:col-span-2 space-y-4">
                         <h5 className="font-label-caps text-label-caps text-white">Platform</h5>
                         <ul className="space-y-2 opacity-60 font-body-sm">
@@ -70,7 +71,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
                     <p className="font-body-sm text-xs opacity-40">© 2026 Pitchly Inc. All rights reserved.</p>
                     <div className="flex gap-8 opacity-40 font-body-sm text-xs">
                         <p className = "cursor-pointer" onClick={handlePolicy}>Privacy Policy</p>

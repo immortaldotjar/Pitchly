@@ -8,7 +8,7 @@ import FeatureCTA from "../components/FeatureComps/FeatureCTA";
 export default function Features() {
     return (
         <div className="bg-background text-on-background selection:bg-primary-container selection:text-on-primary">
-            <div className="pt-[72px]">
+            <div className="pt-nav_height">
                 <FeatureHero />
                 <BentoGrid />
                 <ProcessSteps />

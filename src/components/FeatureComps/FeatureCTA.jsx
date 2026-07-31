@@ -1,19 +1,12 @@
 import { motion } from "motion/react";
 import Button from "../Button";
+import wave from "../../assets/featureWave.svg"
+import { useNavigate } from "react-router";
+const FeatureCTA = () => {
 
-export default function FeatureCTA() {
+  const navigate = useNavigate()
   return (
-    <section className="relative pt-section_gap pb-24 px-margin_mobile md:px-margin_desktop overflow-hidden bg-primary">
-      {/* diagonal wave separator */}
-      <svg
-        className="absolute top-0 left-0 w-full text-background"
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-        style={{ height: "80px" }}
-      >
-        <path d="M0,0 L1440,0 L1440,40 C1200,90 240,90 0,20 Z" fill="currentColor" />
-      </svg>
-
+    <section className="pt-35 pb-20 px-margin_mobile md:px-margin_desktop overflow-hidden bg-cover bg-" style={{backgroundImage : `url(${wave})`}}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +23,7 @@ export default function FeatureCTA() {
         </p>
 
         <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
-          <Button variant="secondary" className="px-8 py-3 rounded-[14px] bg-on-primary text-primary border-transparent">
+          <Button variant="secondary" className="px-8 py-3 rounded-[14px] bg-on-primary text-primary border-transparent" onClick = {() => {navigate("/auth/signup")}}>
             Get Started Now
           </Button>
           <button className="font-body-sm text-body-sm text-on-primary font-semibold hover:underline">
@@ -41,3 +34,5 @@ export default function FeatureCTA() {
     </section>
   );
 }
+
+export default FeatureCTA

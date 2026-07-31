@@ -5,14 +5,6 @@ import Button from "../components/Button";
 import NotFound404 from "../assets/404.png"
 const NotFound = () => {
   const navigate = useNavigate();
-
-  const nodes = [
-    { cx: 40, cy: 120 },
-    { cx: 140, cy: 60 },
-    { cx: 260, cy: 140 },
-    { cx: 360, cy: 70 },
-  ];
-
   return (
     <div className="min-h-screen center px-margin_mobile md:px-margin_desktop bg-background overflow-hidden relative">
 
@@ -25,10 +17,7 @@ const NotFound = () => {
           transition={{ delay: 0.15, duration: 0.5 }}
           className="space-y-3"
         >
-          <p className="font-numeric-data text-primary tracking-widest uppercase text-body-sm">
-            Error 404
-          </p>
-          <h1 className="font-display text-display text-on-surface leading-tight">
+          <h1 className="font-display text-4xl font-bold text-on-surface leading-tight">
             Lost the connection.
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">

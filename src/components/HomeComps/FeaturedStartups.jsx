@@ -41,9 +41,7 @@ export default function FeaturedStartups() {
             <div className="max-w-max_width mx-auto">
                 <div className="flex justify-between items-end mb-10">
                     <div className="space-y-4">
-                        <span className="font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            Featured Profiles
-                        </span>
+    
                         <h2 className="font-headline-lg text-headline-lg text-on-surface">Trending in the Network</h2>
                     </div>
                     <button className="flex items-center gap-2 font-body-sm text-body-sm text-primary font-semibold">

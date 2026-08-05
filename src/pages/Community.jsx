@@ -10,8 +10,8 @@ const Community = () => {
     <div className="bg-background text-on-background selection:bg-primary-container selection:text-on-primary">
       <div className="pt-nav_height">
         <CommunityHero />
-        <CommunityStats />
         <Stories />
+        <CommunityStats />
         <CommunityCalendar />
         <CommunityCTA />
       </div>

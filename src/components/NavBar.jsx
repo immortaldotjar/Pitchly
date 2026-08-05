@@ -22,7 +22,7 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 h-nav_height z-50 backdrop-blur-md bg-surface/80 border-b border-outline-variant flex items-center px-margin_mobile md:px-margin_desktop">
+        <nav className="fixed top-0 left-0 right-0 h-nav_height z-50 backdrop-blur-md bg-surface/80 border border-outline-variant flex items-center px-margin_mobile md:px-margin_desktop m-2 rounded-xl">
             <ul className="max-w-max_width w-full mx-auto flex items-center justify-between">
                 <li className="flex items-center gap-12">
                     <span className="font-headline-md text-headline-md font-bold text-primary center gap-3">
@@ -65,7 +65,7 @@ export default function NavBar() {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-nav_height left-0 right-0 bg-surface border-b border-outline-variant flex flex-col gap-4 p-6 md:hidden"
+                        className="absolute top-nav_height left-0 right-0 bg-surface border border-outline-variant flex flex-col gap-4 p-6 md:hidden mt-2 rounded-xl "
                     >
                         {navLinks.map((link) => (
                             <li

@@ -7,9 +7,6 @@ const Stories = () => {
             <div className="max-w-max_width mx-auto">
                 <div className="flex justify-between items-end mb-12">
                     <div className="space-y-2">
-                        <span className="font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            Stories
-                        </span>
                         <h2 className="font-headline-lg text-headline-lg text-on-surface">
                             Impact beyond the pitch.
                         </h2>
@@ -55,8 +52,6 @@ const Stories = () => {
                             </span>
                         </div>
                     </motion.div>
-
-                    {/* Two stacked testimonial cards */}
                     <div className="flex flex-col gap-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

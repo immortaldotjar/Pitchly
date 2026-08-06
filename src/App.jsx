@@ -11,6 +11,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import NotFound from './pages/NotFound'
 import Features from './pages/Features'
 import Community from './pages/Community'
+import About from './pages/About'
 
 const MainLayout = () => (
   <>
@@ -35,6 +36,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<Features />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/about" element={<About/>} />
+
       </Route>
 
       <Route path="/auth" element={<AuthLayout />}>

@@ -9,7 +9,7 @@ const AboutCTA = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5 }}
-                className="max-w-max_width mx-auto bg-primary rounded-[32px] py-16 px-6 text-center flex flex-col items-center gap-6"
+                className="max-w-max_width mx-auto bg-primary rounded-4xl py-16 px-6 text-center flex flex-col items-center gap-6"
             >
                 <h2 className="font-headline-lg text-headline-lg text-on-primary">
                     Start building your startup today.

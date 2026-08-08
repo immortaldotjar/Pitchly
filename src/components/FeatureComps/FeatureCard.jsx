@@ -5,7 +5,7 @@ export default function FeatureCard({ icon: Icon, title, description, dark = fal
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className={`rounded-2xl p-6 border flex flex-col gap-3 ${
+      className={`rounded-lg p-6 border flex flex-col gap-3 ${
         dark
           ? "bg-primary text-on-primary border-transparent"
           : "bg-surface border-outline-variant"

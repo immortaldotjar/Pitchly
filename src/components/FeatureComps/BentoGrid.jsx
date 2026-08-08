@@ -32,13 +32,12 @@ export default function BentoGrid() {
   return (
     <section className="px-margin_mobile md:px-margin_desktop pb-section_gap">
       <div className="max-w-max_width mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Startup Profiles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
-          className="bg-surface border border-outline-variant rounded-2xl p-6 flex flex-col gap-6"
+          className="bg-surface border border-outline-variant rounded-lg p-6 flex flex-col gap-6"
         >
           <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary center">
             <MdRocketLaunch size={20} />
@@ -64,16 +63,14 @@ export default function BentoGrid() {
             </div>
           </div>
         </motion.div>
-
-        {/* Pitch Deck Analysis */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-surface border border-outline-variant rounded-2xl p-6 flex flex-col gap-6"
+          className="bg-surface border border-outline-variant rounded-lg p-6 flex flex-col gap-6"
         >
-          <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary center">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary center">
             <MdDescription size={20} />
           </div>
 
@@ -98,7 +95,6 @@ export default function BentoGrid() {
           </div>
         </motion.div>
 
-        {/* 3 small cards */}
         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6">
           {smallCards.map((card, i) => (
             <motion.div
@@ -113,13 +109,12 @@ export default function BentoGrid() {
           ))}
         </div>
 
-        {/* Investor Discovery */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
-          className="lg:col-span-1 bg-surface border border-outline-variant rounded-2xl p-6 flex flex-col gap-6"
+          className="lg:col-span-1 bg-surface border border-outline-variant rounded-lg p-6 flex flex-col gap-6"
         >
           <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary center">
             <MdManageSearch size={20} />
@@ -146,8 +141,6 @@ export default function BentoGrid() {
             ))}
           </div>
         </motion.div>
-
-        {/* Enterprise Security */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

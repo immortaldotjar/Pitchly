@@ -15,14 +15,26 @@ const faqs = [
         q: "Is my pitch deck data secure?",
         a: "Pitchly uses bank-grade encryption and granular permission controls. You decide exactly who sees your materials and for how long.",
     },
+    {
+        q: "How do I start a pitch on Pitchly?",
+        a: "Create your startup profile, upload your pitch deck, and set your visibility preferences. Verified investors and mentors can then discover and reach out to you directly.",
+    },
+    {
+        q: "Is my startup data safe?",
+        a: "Yes. Pitchly uses enterprise-grade encryption and granular access controls, so you decide exactly who can view your materials and for how long.",
+    },
+    {
+        q: "Who are the mentors on the platform?",
+        a: "Our mentors are vetted industry operators, former founders, and domain experts who volunteer their time to guide early and growth-stage startups.",
+    },
 ];
 
-function AccordionItem({ q, a, isOpen, onClick }) {
+const AccordionItem = ({ q, a, isOpen, onClick }) => {
     return (
-        <div className="bg-surface-container-low rounded-2xl border border-outline-variant/30">
+        <div className="bg-surface-container-low rounded-lg border border-outline-variant/30">
             <button
                 onClick={onClick}
-                className="w-full flex items-center justify-between p-6 font-body-md font-bold text-on-surface text-left"
+                className="w-full flex items-center justify-between py-4 px-6 font-body-md font-semibold text-on-surface text-left"
             >
                 {q}
                 <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -39,7 +51,7 @@ function AccordionItem({ q, a, isOpen, onClick }) {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                     >
-                        <div className="px-6 pb-6 font-body-md text-on-surface-variant">{a}</div>
+                        <div className="px-6 pb-4 text-sm font-body-md text-on-surface-variant">{a}</div>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -47,13 +59,13 @@ function AccordionItem({ q, a, isOpen, onClick }) {
     );
 }
 
-export default function FAQ() {
+const FAQ = () => {
     const [open, setOpen] = useState(null);
 
     return (
         <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-lowest">
             <div className="max-w-3xl mx-auto">
-                <h2 className="font-headline-lg text-headline-lg text-center mb-16">Common Questions</h2>
+                <h2 className="font-headline-lg text-headline-lg text-center mb-16">Frequently Asked Questions</h2>
                 <div className="space-y-4">
                     {faqs.map((faq, i) => (
                         <AccordionItem
@@ -69,3 +81,5 @@ export default function FAQ() {
         </section>
     );
 }
+
+export default FAQ

@@ -9,7 +9,7 @@ export default function Auth() {
 
   return (
     <main className="flex min-h-screen">
-      <section className="hidden lg:flex w-1/2 bg-[#1A202C] relative p-margin_desktop flex-col justify-between overflow-hidden">
+      <section className="hidden lg:flex w-1/2 bg-dark-background relative p-margin_desktop flex-col justify-between overflow-hidden">
         <div className="z-10">
           <span className="font-headline-md text-headline-md font-bold text-primary-fixed">Pitchly</span>
         </div>
@@ -40,7 +40,7 @@ export default function Auth() {
       </section>
 
       <section className="w-full lg:w-1/2 bg-surface-container-lowest center p-margin_mobile md:p-margin_desktop">
-        <div className="w-full max-w-[440px] flex flex-col gap-4">
+        <div className="w-full max-w-110 flex flex-col gap-4">
           <div className="lg:hidden mb-4">
             <span className="font-headline-md text-headline-md font-bold text-primary">Pitchly</span>
           </div>

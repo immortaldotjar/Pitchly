@@ -4,7 +4,7 @@ import featureHeroBg from "../../assets/featureHeroBg.webp"
 
 export default function FeatureHero() {
   return (
-    <section className="pt-20 pb-16 px-margin_mobile md:px-margin_desktop text-center bg-center bg-no-repeat bg-cover" style={{backgroundImage : `url(${featureHeroBg})`}}>
+    <section className="pt-20 pb-16 px-margin_mobile md:px-margin_desktop text-center bg-bottom bg-no-repeat bg-cover" style={{backgroundImage : `url(${featureHeroBg})`}}>
       <div className="max-w-3xl mx-auto flex flex-col items-center gap-6">
 
         <motion.h1

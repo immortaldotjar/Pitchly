@@ -3,7 +3,7 @@ import Button from "../Button";
 import communityHeroBg from "../../assets/communityHeroBg.webp"
 const CommunityHero = () => {
   return (
-    <section className="pt-20 pb-16 px-margin_mobile md:px-margin_desktop bg-cover bg-no-repeat bg-center " style={{backgroundImage : `url(${communityHeroBg})`}}>
+    <section className="pt-20 pb-16 px-margin_mobile md:px-margin_desktop bg-cover bg-no-repeat bg-bottom " style={{backgroundImage : `url(${communityHeroBg})`}}>
       <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-6 mb-16">
 
         <motion.h1

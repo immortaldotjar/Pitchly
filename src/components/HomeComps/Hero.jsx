@@ -15,10 +15,9 @@ const heroStats = [
 
 
 export default function Hero() {
-
     const navigate = useNavigate()
     return (
-        <div className="min-h-screen center px-margin_mobile md:px-margin_desktop max-w-max_width mx-auto pb-8 md:pb-0 bg-cover bg-center bg-no-repeat " style={{ backgroundImage: `url(${heroBg})` }}>
+        <div className="min-h-screen center px-margin_mobile md:px-margin_desktop max-w-max_width mx-auto pb-8 md:pb-0">
             <div className="grid grid-cols-12 gap-gutter items-center">
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}

@@ -26,7 +26,7 @@ export default function NavBar() {
             <ul className="max-w-max_width w-full mx-auto flex items-center justify-between">
                 <li className="flex items-center gap-12">
                     <span className="font-headline-md text-headline-md font-bold text-primary center gap-3">
-                        <img src="/logo.svg" alt="pitchly_logo" width={40} />    Pitchly
+                        <img src="/logo.svg" alt="pitchly_logo" width={40} />Pitchly
                     </span>
                     <ul className="hidden md:flex gap-8 md:items-center">
                         {navLinks.map((link) => (

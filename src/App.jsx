@@ -13,6 +13,8 @@ import Features from './pages/Features'
 import Community from './pages/Community'
 import About from './pages/About'
 
+import AdminDashboard from './pages/AdminDashboard'
+
 const MainLayout = () => (
   <>
     <NavBar />
@@ -37,6 +39,7 @@ const App = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/community" element={<Community />} />
         <Route path="/about" element={<About/>} />
+        <Route path="/admin" element={<AdminDashboard/>} />
       </Route>
 
       <Route path="/auth" element={<AuthLayout />}>

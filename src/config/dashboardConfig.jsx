@@ -1,4 +1,4 @@
-import { MdGridView, MdGroup, MdRocketLaunch, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout, MdPeople, MdFileUpload, MdNotifications } from "react-icons/md"
+import { MdGridView, MdGroup, MdRocketLaunch, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout, MdPeople, MdFileUpload, MdNotifications ,MdExplore } from "react-icons/md"
 
 export const adminSidebarProps = {
     brandTitle: "Pitchly",
@@ -29,6 +29,7 @@ export const userSidebarProps = {
     navItems: [
         { icon: MdGridView, label: "Dashboard", path: "/dashboard" },
         { icon: MdRocketLaunch, label: "My Startup", path: "/dashboard/startup" },
+        { icon: MdExplore, label: "Discover", path: "/dashboard/discover" },
         { icon: MdPeople, label: "Networking", path: "/dashboard/networking" },
         { icon: MdFileUpload, label: "Pitch Deck", path: "/dashboard/pitch-deck" },
         { icon: MdSettings, label: "Settings", path: "/dashboard/settings" },

@@ -16,7 +16,9 @@ import AuthLayout from './layouts/AuthLayout'
 import PlainLayout from './layouts/PlainLayout'
 import DashboardLayout from './layouts/DashboardLayout'
 import MyStartup from './pages/MyStartup'
+import Discover from './pages/Discover'
 import { adminSidebarProps, adminTopbarProps, userSidebarProps, userTopbarProps } from './config/dashboardConfig'
+
 
 const App = () => {
   return (
@@ -45,6 +47,7 @@ const App = () => {
       <Route path="/dashboard" element={<DashboardLayout sidebarProps={userSidebarProps} topbarProps={userTopbarProps} />}>
         <Route index element={<UserDashboard />} />
         <Route path="startup" element={<MyStartup/>} />
+        <Route path="discover" element={<Discover/>} />
         
       </Route>
 

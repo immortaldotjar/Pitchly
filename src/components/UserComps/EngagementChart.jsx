@@ -1,40 +1,51 @@
-import { motion } from "motion/react"
+import { Chart, HistogramSeries } from "lightweight-charts-react-components"
 
-const days = [
-    { label: "MON", value: 40 },
-    { label: "TUE", value: 60 },
-    { label: "WED", value: 45 },
-    { label: "THU", value: 92 },
-    { label: "FRI", value: 38 },
-    { label: "SAT", value: 72 },
-    { label: "SUN", value: 42 },
-]
+const days = ["2024-06-03", "2024-06-04", "2024-06-05", "2024-06-06", "2024-06-07", "2024-06-08", "2024-06-09"]
+const values = [40, 60, 45, 92, 38, 72, 42]
+
+const data = values.map((value, i) => ({
+    time: days[i],
+    value,
+    color: value > 85 ? "#003f87" : "rgba(0, 63, 135, 0.25)",
+}))
+
+const chartOptions = {
+    layout: {
+        background: { color: "transparent" },
+        textColor: "#424752",
+        fontFamily: "Inter, sans-serif",
+        fontSize: 10,
+    },
+    grid: {
+        vertLines: { visible: false },
+        horzLines: { color: "#e0e3e8" },
+    },
+    rightPriceScale: { visible: false },
+    timeScale: {
+        borderVisible: false,
+        tickMarkFormatter: (time) => {
+            const date = typeof time === "string" ? new Date(time) : new Date(time.year, time.month - 1, time.day)
+            return date.toLocaleDateString("en-US", { weekday: "short" }).toUpperCase()
+        },
+    },
+    crosshair: {
+        vertLine: { visible: false },
+        horzLine: { visible: false },
+    },
+    handleScroll: false,
+    handleScale: false,
+}
 
 const EngagementChart = () => {
     return (
         <div className="bg-surface border border-outline-variant rounded-2xl p-6 lg:col-span-2">
-            <div className="flex items-center justify-between mb-8">
-                <div>
-                    <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Investor Engagement</h4>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant">Click-through and session length this week</p>
-                </div>
-            </div>
+            <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Investor Engagement</h4>
+            <p className="font-body-sm text-body-sm text-on-surface-variant mb-6">Click-through and session length this week</p>
 
-            <div className="flex items-end justify-between gap-2 h-48">
-                {days.map((day, i) => (
-                    <div key={day.label} className="flex-1 flex flex-col items-center gap-1.5">
-                        <div className="w-full flex items-end justify-center gap-0.5 h-full">
-                            <motion.div
-                                initial={{ height: 0 }}
-                                whileInView={{ height: `${day.value}%` }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: i * 0.05 }}
-                                className={`w-2.5 rounded-t-sm ${day.value > 85 ? "bg-primary" : "bg-primary/25"}`}
-                            />
-                        </div>
-                        <span className="font-label-caps text-[10px] text-on-surface-variant">{day.label}</span>
-                    </div>
-                ))}
+            <div className="h-48">
+                <Chart options={chartOptions} containerProps={{ style: { width: "100%", height: "100%" } }}>
+                    <HistogramSeries data={data} options={{ priceLineVisible: false, lastValueVisible: false }} />
+                </Chart>
             </div>
         </div>
     )

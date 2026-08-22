@@ -1,0 +1,73 @@
+export const mockStartup = {
+    name: "QuantumStream",
+    logo: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=200&q=80",
+    tagline: "SaaS / FinTech",
+    stage: "Series A",
+    location: "San Francisco, CA",
+    fundingGoal: "$5.2M Funding Goal",
+    employees: "24 Employees",
+    overview: "QuantumStream is an enterprise-grade liquidity management platform that utilizes real-time predictive analytics to optimize cross-border transactions. Our mission is to democratize institutional-grade financial intelligence for mid-market global corporations, reducing operational friction by up to 40%.",
+    problem: "Mid-market enterprises currently lose $200B annually due to inefficient capital allocation and currency fluctuations. Traditional bank tools are either too manual or locked behind massive institutional paywalls.",
+    solution: "QuantumStream's proprietary \"Flux\" engine provides autonomous rebalancing and hedging recommendations, allowing finance teams to execute complex trades with a single click at wholesale rates.",
+    pitchDeck: {
+        fileName: "QuantumStream_Pitch_Deck_Q4.pdf",
+        updatedAt: "Updated 2 days ago",
+        size: "14.5 MB",
+        thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80",
+    },
+    leadership: [
+        { name: "Alex Rivers", role: "Founder & CEO", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&q=80" },
+        { name: "Elena Chen", role: "CTO", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80" },
+        { name: "Marcus Thorne", role: "Head of Product", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80" },
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
+        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80",
+    ],
+    roadmap: [
+        {
+            period: "Q4 2024",
+            tag: "UPCOMING",
+            active: true,
+            title: "Series A Funding Close",
+            description: "Finalizing the $5.2M round to accelerate EU expansion and R&D for AI liquidity prediction engine.",
+        },
+        {
+            period: "Q3 2024",
+            active: false,
+            title: "Enterprise Beta Launch",
+            description: "Onboarded 15 Tier-1 corporate partners with a combined treasury volume of $450M+.",
+        },
+        {
+            period: "Q1 2024",
+            active: false,
+            title: "Flux Engine Core v1.0",
+            description: "Completed the first stable build of our autonomous rebalancing algorithm.",
+        },
+    ],
+    metrics: {
+        profileViews: 128,
+        deckDownloads: 14,
+        newInquiries: 3,
+    },
+    feedback: [
+        {
+            name: "Sarah V.",
+            role: "Sequoia Cap.",
+            quote: "Solid unit economics. Would love to see more detail on the customer acquisition cost in your next deck iteration.",
+            time: "2 HOURS AGO",
+            avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
+        },
+        {
+            name: "David K.",
+            role: "Angel Investor",
+            quote: "Impressive traction with the beta partners. The market sizing seems conservative, which I like.",
+            time: "YESTERDAY",
+            avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=80",
+        },
+    ],
+    totalComments: 12,
+    visibility: "Verified Investors",
+}

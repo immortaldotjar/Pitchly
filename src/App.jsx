@@ -17,6 +17,7 @@ import PlainLayout from './layouts/PlainLayout'
 import DashboardLayout from './layouts/DashboardLayout'
 import MyStartup from './pages/MyStartup'
 import Discover from './pages/Discover'
+import Networking from './pages/Networking'
 import { adminSidebarProps, adminTopbarProps, userSidebarProps, userTopbarProps } from './config/dashboardConfig'
 
 
@@ -48,6 +49,8 @@ const App = () => {
         <Route index element={<UserDashboard />} />
         <Route path="startup" element={<MyStartup/>} />
         <Route path="discover" element={<Discover/>} />
+        <Route path="networking" element={<Networking />} />
+
         
       </Route>
 

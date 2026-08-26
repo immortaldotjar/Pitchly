@@ -20,6 +20,7 @@ import Discover from './pages/Discover'
 import Networking from './pages/Networking'
 import { adminSidebarProps, adminTopbarProps, userSidebarProps, userTopbarProps } from './config/dashboardConfig'
 import PitchDeck from "./pages/PitchDeck"
+import Settings from './pages/Settings'
 
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="discover" element={<Discover/>} />
         <Route path="networking" element={<Networking />} />
         <Route path="pitch-deck" element={<PitchDeck />} />
+        <Route path="settings" element={<Settings />} />
 
         
       </Route>

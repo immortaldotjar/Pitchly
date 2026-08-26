@@ -22,6 +22,7 @@ import { adminSidebarProps, adminTopbarProps, userSidebarProps, userTopbarProps 
 import PitchDeck from "./pages/PitchDeck"
 import Settings from './pages/Settings'
 import AdminUsers from './pages/AdminUsers'
+import AdminStartups from './pages/AdminStartups'
 
 
 const App = () => {
@@ -47,7 +48,8 @@ const App = () => {
       <Route path="/admin" element={<DashboardLayout sidebarProps={adminSidebarProps} topbarProps={adminTopbarProps} />}>
         <Route index element={<AdminDashboard />} />
         <Route path="users" element={<AdminUsers />} />
-
+        <Route path="startups" element={<AdminStartups/>} />
+        
       </Route>
 
       <Route path="/dashboard" element={<DashboardLayout sidebarProps={userSidebarProps} topbarProps={userTopbarProps} />}>
@@ -58,7 +60,6 @@ const App = () => {
         <Route path="pitch-deck" element={<PitchDeck />} />
         <Route path="settings" element={<Settings />} />
 
-        
       </Route>
 
       <Route path='*' element={<NotFound />} />

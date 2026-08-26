@@ -21,6 +21,7 @@ import Networking from './pages/Networking'
 import { adminSidebarProps, adminTopbarProps, userSidebarProps, userTopbarProps } from './config/dashboardConfig'
 import PitchDeck from "./pages/PitchDeck"
 import Settings from './pages/Settings'
+import AdminUsers from './pages/AdminUsers'
 
 
 const App = () => {
@@ -45,6 +46,8 @@ const App = () => {
 
       <Route path="/admin" element={<DashboardLayout sidebarProps={adminSidebarProps} topbarProps={adminTopbarProps} />}>
         <Route index element={<AdminDashboard />} />
+        <Route path="users" element={<AdminUsers />} />
+
       </Route>
 
       <Route path="/dashboard" element={<DashboardLayout sidebarProps={userSidebarProps} topbarProps={userTopbarProps} />}>

@@ -1,11 +1,13 @@
 import { useState, useMemo, useEffect } from "react"
-import { MdFileDownload } from "react-icons/md"
-import StartupsStatsRow from "../components/AdminComps/Startups/StartupsStatsRow"
-import StartupsToolbar from "../components/AdminComps/Startups/StartupsToolbar"
-import BulkActionBar from "../components/AdminComps/Startups/BulkActionBar"
-import StartupsTable from "../components/AdminComps/Startups/StartupsTable"
-import StartupsPagination from "../components/AdminComps/Startups/StartupsPagination"
-import { mockStartups } from "../config/adminStartupsConfig"
+import { MdFileDownload, MdVisibility, MdBlock, MdCheckCircleOutline, MdCancel, MdRocketLaunch, MdVerifiedUser } from "react-icons/md"
+import StatCard from "../components/StatCard"
+import TableToolbar from "../components/AdminComps/TableToolbar"
+import BulkActionBar from "../components/AdminComps/BulkActionBar"
+import DataTable from "../components/AdminComps/DataTable"
+import StatusBadge from "../components/AdminComps/StatusBadge"
+import ActionsMenu from "../components/AdminComps/ActionsMenu"
+import Pagination from "../components/AdminComps/Pagination"
+import { mockStartups, industryFilters, statusFilters, statusDotTone } from "../config/adminStartupsConfig"
 
 const PAGE_SIZE = 5
 
@@ -47,8 +49,6 @@ const AdminStartups = () => {
         setSelectedIds(allSelected ? selectedIds.filter((id) => !visibleIds.includes(id)) : [...new Set([...selectedIds, ...visibleIds])])
     }
 
-    const handleView = (id) => console.log("view startup", id)
-
     const handleApprove = (id) => {
         setStartups((prev) => prev.map((startup) => startup.id === id ? { ...startup, status: "Active" } : startup))
     }
@@ -64,15 +64,40 @@ const AdminStartups = () => {
         setSelectedIds((prev) => prev.filter((item) => item !== id))
     }
 
-    const handleSuspendSelected = () => {
-        setStartups((prev) => prev.map((startup) => selectedIds.includes(startup.id) ? { ...startup, status: "Suspended" } : startup))
-        setSelectedIds([])
-    }
+    const columns = [
+        {
+            key: "startup",
+            label: "Startup",
+            render: (startup) => (
+                <div className="flex items-center gap-3">
+                    <span className={`w-9 h-9 rounded-lg center font-bold text-body-sm shrink-0 ${startup.tone}`}>{startup.initial}</span>
+                    <div>
+                        <p className="font-body-sm text-body-sm font-bold text-on-surface">{startup.name}</p>
+                        <p className="font-body-sm text-[11px] text-on-surface-variant">{startup.founder}</p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            key: "industry",
+            label: "Industry",
+            render: (startup) => (
+                <span className="px-2.5 py-1 rounded-full bg-surface-container-low font-body-sm text-[11px] font-semibold text-on-surface-variant">
+                    {startup.industry}
+                </span>
+            ),
+        },
+        { key: "stage", label: "Stage", render: (startup) => <span className="font-body-sm text-body-sm text-on-surface-variant">{startup.stage}</span> },
+        { key: "funding", label: "Funding Raised", render: (startup) => <span className="font-numeric-data text-body-sm text-on-surface">{startup.fundingRaised}</span> },
+        { key: "status", label: "Status", render: (startup) => <StatusBadge status={startup.status} dotTone={statusDotTone} /> },
+    ]
 
-    const handleRejectSelected = () => {
-        setStartups((prev) => prev.map((startup) => selectedIds.includes(startup.id) ? { ...startup, status: "Rejected" } : startup))
-        setSelectedIds([])
-    }
+    const stats = [
+        { icon: MdRocketLaunch, label: "Total Startups", value: startups.length },
+        { icon: MdCheckCircleOutline, label: "Active", value: startups.filter((startup) => startup.status === "Active").length },
+        { icon: MdVerifiedUser, label: "Pending Review", value: startups.filter((startup) => startup.status === "Pending Review").length, badge: startups.filter((startup) => startup.status === "Pending Review").length > 0 ? "Needs Action" : null, badgeTone: "action" },
+        { icon: MdBlock, label: "Suspended", value: startups.filter((startup) => startup.status === "Suspended").length, badge: startups.filter((startup) => startup.status === "Suspended").length > 0 ? "Critical" : null, badgeTone: "critical" },
+    ]
 
     return (
         <>
@@ -87,14 +112,19 @@ const AdminStartups = () => {
                 </button>
             </div>
 
-            <StartupsStatsRow startups={startups} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {stats.map((stat) => <StatCard key={stat.label} {...stat} />)}
+            </div>
 
             <div className="bg-surface border border-outline-variant rounded-2xl overflow-hidden">
-                <StartupsToolbar
+                <TableToolbar
                     search={search}
                     onSearchChange={setSearch}
-                    activeIndustry={activeIndustry}
-                    onIndustryChange={setActiveIndustry}
+                    searchPlaceholder="Search by startup or founder..."
+                    pillOptions={industryFilters}
+                    activePill={activeIndustry}
+                    onPillChange={setActiveIndustry}
+                    statusOptions={statusFilters}
                     status={status}
                     onStatusChange={setStatus}
                 />
@@ -102,24 +132,34 @@ const AdminStartups = () => {
                 {selectedIds.length > 0 && (
                     <BulkActionBar
                         count={selectedIds.length}
-                        onSuspendSelected={handleSuspendSelected}
-                        onRejectSelected={handleRejectSelected}
                         onClear={() => setSelectedIds([])}
+                        actions={[
+                            { label: "Suspend", icon: MdBlock, onClick: () => { setStartups((prev) => prev.map((startup) => selectedIds.includes(startup.id) ? { ...startup, status: "Suspended" } : startup)); setSelectedIds([]) } },
+                            { label: "Reject", icon: MdCancel, danger: true, onClick: () => { setStartups((prev) => prev.map((startup) => selectedIds.includes(startup.id) ? { ...startup, status: "Rejected" } : startup)); setSelectedIds([]) } },
+                        ]}
                     />
                 )}
 
-                <StartupsTable
-                    startups={visibleStartups}
+                <DataTable
+                    columns={columns}
+                    rows={visibleStartups}
                     selectedIds={selectedIds}
                     onToggleSelect={handleToggleSelect}
                     onToggleSelectAll={handleToggleSelectAll}
-                    onView={handleView}
-                    onApprove={handleApprove}
-                    onToggleSuspend={handleToggleSuspend}
-                    onReject={handleReject}
+                    emptyLabel="No startups match your search or filters."
+                    renderActions={(startup) => (
+                        <ActionsMenu
+                            actions={[
+                                { label: "View Profile", icon: MdVisibility, onClick: () => console.log("view startup", startup.id) },
+                                { label: "Approve Startup", icon: MdCheckCircleOutline, tone: "primary", visible: startup.status === "Pending Review", onClick: () => handleApprove(startup.id) },
+                                { label: startup.status === "Suspended" ? "Reactivate" : "Suspend", icon: startup.status === "Suspended" ? MdCheckCircleOutline : MdBlock, visible: startup.status !== "Pending Review", onClick: () => handleToggleSuspend(startup.id) },
+                                { label: "Reject / Remove", icon: MdCancel, danger: true, onClick: () => handleReject(startup.id) },
+                            ]}
+                        />
+                    )}
                 />
 
-                <StartupsPagination
+                <Pagination
                     page={page}
                     pageCount={pageCount}
                     totalCount={filteredStartups.length}

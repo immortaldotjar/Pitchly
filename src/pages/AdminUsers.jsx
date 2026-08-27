@@ -1,11 +1,14 @@
 import { useState, useMemo, useEffect } from "react"
-import { MdPersonAdd } from "react-icons/md"
-import UsersStatsRow from "../components/AdminComps/Users/UsersStatsRow"
-import UsersToolbar from "../components/AdminComps/Users/UsersToolbar"
-import BulkActionBar from "../components/AdminComps/Users/BulkActionBar"
-import UsersTable from "../components/AdminComps/Users/UsersTable"
-import UsersPagination from "../components/AdminComps/Users/UsersPagination"
-import { mockUsers } from "../config/adminUsersConfig"
+import { MdPersonAdd, MdVisibility, MdBlock, MdCheckCircleOutline, MdDeleteOutline } from "react-icons/md"
+import StatCard from "../components/StatCard"
+import { MdGroup, MdRocketLaunch, MdInsights } from "react-icons/md"
+import TableToolbar from "../components/AdminComps/TableToolbar"
+import BulkActionBar from "../components/AdminComps/BulkActionBar"
+import DataTable from "../components/AdminComps/DataTable"
+import StatusBadge from "../components/AdminComps/StatusBadge"
+import ActionsMenu from "../components/AdminComps/ActionsMenu"
+import Pagination from "../components/AdminComps/Pagination"
+import { mockUsers, roleFilters, statusFilters, roleTone, statusDotTone } from "../config/adminUsersConfig"
 
 const PAGE_SIZE = 5
 
@@ -47,8 +50,6 @@ const AdminUsers = () => {
         setSelectedIds(allSelected ? selectedIds.filter((id) => !visibleIds.includes(id)) : [...new Set([...selectedIds, ...visibleIds])])
     }
 
-    const handleView = (id) => console.log("view user", id)
-
     const handleToggleSuspend = (id) => {
         setUsers((prev) => prev.map((user) =>
             user.id === id ? { ...user, status: user.status === "Suspended" ? "Active" : "Suspended" } : user
@@ -60,15 +61,40 @@ const AdminUsers = () => {
         setSelectedIds((prev) => prev.filter((item) => item !== id))
     }
 
-    const handleSuspendSelected = () => {
-        setUsers((prev) => prev.map((user) => selectedIds.includes(user.id) ? { ...user, status: "Suspended" } : user))
-        setSelectedIds([])
-    }
+    const columns = [
+        {
+            key: "user",
+            label: "User",
+            render: (user) => (
+                <div className="flex items-center gap-3">
+                    <img src={user.avatar} alt={user.name} className="w-9 h-9 rounded-full object-cover" />
+                    <div>
+                        <p className="font-body-sm text-body-sm font-bold text-on-surface">{user.name}</p>
+                        <p className="font-body-sm text-[11px] text-on-surface-variant">{user.email}</p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            key: "role",
+            label: "Role",
+            render: (user) => (
+                <span className={`px-2.5 py-1 rounded-full font-body-sm text-[11px] font-semibold ${roleTone[user.role] ?? "bg-surface-container-low text-on-surface-variant"}`}>
+                    {user.role}
+                </span>
+            ),
+        },
+        { key: "status", label: "Status", render: (user) => <StatusBadge status={user.status} dotTone={statusDotTone} /> },
+        { key: "startup", label: "Startup", render: (user) => <span className="font-body-sm text-body-sm text-on-surface-variant">{user.startup ?? "—"}</span> },
+        { key: "lastActive", label: "Last Active", render: (user) => <span className="font-body-sm text-body-sm text-on-surface-variant">{user.lastActive}</span> },
+    ]
 
-    const handleDeleteSelected = () => {
-        setUsers((prev) => prev.filter((user) => !selectedIds.includes(user.id)))
-        setSelectedIds([])
-    }
+    const stats = [
+        { icon: MdGroup, label: "Total Users", value: users.length },
+        { icon: MdRocketLaunch, label: "Founders", value: users.filter((user) => user.role === "Founder").length },
+        { icon: MdInsights, label: "Investors", value: users.filter((user) => user.role === "Investor").length },
+        { icon: MdBlock, label: "Suspended", value: users.filter((user) => user.status === "Suspended").length, badge: users.filter((user) => user.status === "Suspended").length > 0 ? "Needs Review" : null, badgeTone: "critical" },
+    ]
 
     return (
         <>
@@ -83,14 +109,19 @@ const AdminUsers = () => {
                 </button>
             </div>
 
-            <UsersStatsRow users={users} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {stats.map((stat) => <StatCard key={stat.label} {...stat} />)}
+            </div>
 
             <div className="bg-surface border border-outline-variant rounded-2xl overflow-hidden">
-                <UsersToolbar
+                <TableToolbar
                     search={search}
                     onSearchChange={setSearch}
-                    activeRole={activeRole}
-                    onRoleChange={setActiveRole}
+                    searchPlaceholder="Search by name or email..."
+                    pillOptions={roleFilters}
+                    activePill={activeRole}
+                    onPillChange={setActiveRole}
+                    statusOptions={statusFilters}
                     status={status}
                     onStatusChange={setStatus}
                 />
@@ -98,23 +129,33 @@ const AdminUsers = () => {
                 {selectedIds.length > 0 && (
                     <BulkActionBar
                         count={selectedIds.length}
-                        onSuspendSelected={handleSuspendSelected}
-                        onDeleteSelected={handleDeleteSelected}
                         onClear={() => setSelectedIds([])}
+                        actions={[
+                            { label: "Suspend", icon: MdBlock, onClick: () => { setUsers((prev) => prev.map((user) => selectedIds.includes(user.id) ? { ...user, status: "Suspended" } : user)); setSelectedIds([]) } },
+                            { label: "Delete", icon: MdDeleteOutline, danger: true, onClick: () => { setUsers((prev) => prev.filter((user) => !selectedIds.includes(user.id))); setSelectedIds([]) } },
+                        ]}
                     />
                 )}
 
-                <UsersTable
-                    users={visibleUsers}
+                <DataTable
+                    columns={columns}
+                    rows={visibleUsers}
                     selectedIds={selectedIds}
                     onToggleSelect={handleToggleSelect}
                     onToggleSelectAll={handleToggleSelectAll}
-                    onView={handleView}
-                    onToggleSuspend={handleToggleSuspend}
-                    onDelete={handleDelete}
+                    emptyLabel="No users match your search or filters."
+                    renderActions={(user) => (
+                        <ActionsMenu
+                            actions={[
+                                { label: "View Profile", icon: MdVisibility, onClick: () => console.log("view user", user.id) },
+                                { label: user.status === "Suspended" ? "Reactivate User" : "Suspend User", icon: user.status === "Suspended" ? MdCheckCircleOutline : MdBlock, onClick: () => handleToggleSuspend(user.id) },
+                                { label: "Delete User", icon: MdDeleteOutline, danger: true, onClick: () => handleDelete(user.id) },
+                            ]}
+                        />
+                    )}
                 />
 
-                <UsersPagination
+                <Pagination
                     page={page}
                     pageCount={pageCount}
                     totalCount={filteredUsers.length}

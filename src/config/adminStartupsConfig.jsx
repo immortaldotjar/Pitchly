@@ -2,6 +2,13 @@ export const industryFilters = ["All", "AI & ML", "FinTech", "HealthTech", "SaaS
 
 export const statusFilters = ["All Statuses", "Active", "Pending Review", "Suspended", "Rejected"]
 
+export const statusDotTone = {
+    Active: "bg-emerald-500",
+    "Pending Review": "bg-tertiary",
+    Suspended: "bg-error",
+    Rejected: "bg-outline-variant",
+}
+
 export const mockStartups = [
     { id: "s1", name: "NexGen Analytics", initial: "N", tone: "bg-primary/15 text-primary", founder: "Sarah Jenkins", industry: "AI & ML", stage: "Series A", fundingRaised: "$4.1M", status: "Pending Review", joined: "2024-10-24" },
     { id: "s2", name: "FlowState", initial: "F", tone: "bg-tertiary-fixed text-on-tertiary-fixed", founder: "Marcus Thorne", industry: "SaaS", stage: "Seed", fundingRaised: "$1.2M", status: "Active", joined: "2024-02-19" },

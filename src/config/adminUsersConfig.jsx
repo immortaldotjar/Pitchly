@@ -2,6 +2,19 @@ export const roleFilters = ["All", "Founder", "Investor", "Admin"]
 
 export const statusFilters = ["All Statuses", "Active", "Away", "Suspended", "Pending"]
 
+export const roleTone = {
+    Founder: "bg-tertiary-fixed text-on-tertiary-fixed",
+    Investor: "bg-primary/10 text-primary",
+    Admin: "bg-inverse-surface text-inverse-on-surface",
+}
+
+export const statusDotTone = {
+    Active: "bg-emerald-500",
+    Away: "bg-outline-variant",
+    Suspended: "bg-error",
+    Pending: "bg-tertiary",
+}
+
 export const mockUsers = [
     { id: "u1", name: "Elena Rodriguez", email: "elena@sparkcapital.com", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80", role: "Investor", status: "Active", startup: null, joined: "2024-03-12", lastActive: "2 mins ago" },
     { id: "u2", name: "James Wilson", email: "james@nexgen.ai", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80", role: "Founder", status: "Away", startup: "NexGen Analytics", joined: "2024-01-08", lastActive: "14 mins ago" },

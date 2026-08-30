@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { MdCameraAlt } from "react-icons/md"
-import Input from "../../Input"
-import Button from "../../Button"
+import Input from "../Input"
+import Button from "../Button"
 
 const ProfileForm = ({ profile, onSave }) => {
 

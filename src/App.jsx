@@ -23,6 +23,7 @@ import PitchDeck from "./pages/PitchDeck"
 import Settings from './pages/Settings'
 import AdminUsers from './pages/AdminUsers'
 import AdminStartups from './pages/AdminStartups'
+import AdminSettings from './pages/AdminSettings'
 
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
         <Route index element={<AdminDashboard />} />
         <Route path="users" element={<AdminUsers />} />
         <Route path="startups" element={<AdminStartups/>} />
+        <Route path="settings" element={<AdminSettings/>} />
         
       </Route>
 

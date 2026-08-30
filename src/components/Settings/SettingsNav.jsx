@@ -1,13 +1,4 @@
-import { MdPerson, MdRocketLaunch, MdShield, MdManageAccounts } from "react-icons/md"
-
-const tabs = [
-    { id: "profile", label: "Profile", icon: MdPerson },
-    { id: "startup", label: "Startup", icon: MdRocketLaunch },
-    { id: "security", label: "Security", icon: MdShield },
-    { id: "account", label: "Account", icon: MdManageAccounts },
-]
-
-const SettingsNav = ({ active, onChange }) => {
+const SettingsNav = ({ tabs, active, onChange }) => {
     return (
         <nav className="bg-surface border border-outline-variant rounded-2xl p-2 space-y-1 lg:sticky lg:top-24">
             {tabs.map((tab) => (

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ToggleSwitch from "../../ToggleSwitch"
+import ToggleSwitch from "../ToggleSwitch"
 
 const TwoFactorCard = ({ enabled, onToggle }) => {
 

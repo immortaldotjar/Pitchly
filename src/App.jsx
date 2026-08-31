@@ -25,6 +25,7 @@ import AdminUsers from './pages/AdminUsers'
 import AdminStartups from './pages/AdminStartups'
 import AdminSettings from './pages/AdminSettings'
 import AdminApprovals from './pages/AdminApprovals'
+import AdminReports from './pages/AdminReports'
 
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="users" element={<AdminUsers />} />
         <Route path="startups" element={<AdminStartups/>} />
         <Route path="approvals" element={<AdminApprovals/>} />
+        <Route path="reports" element={<AdminReports/>} />
         <Route path="settings" element={<AdminSettings/>} />
         
       </Route>

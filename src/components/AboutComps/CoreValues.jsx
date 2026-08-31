@@ -36,7 +36,7 @@ const values = [
 
 const CoreValues = () => {
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
+        <div className="py-section_gap px-margin_mobile md:px-margin_desktop">
             <div className="max-w-max_width mx-auto">
                 <h2 className="font-headline-lg text-headline-lg text-on-surface text-center mb-16">
                     Our Core Values
@@ -62,7 +62,7 @@ const CoreValues = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

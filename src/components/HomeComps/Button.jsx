@@ -7,12 +7,12 @@ const variants = {
   ghost: "text-primary hover:bg-surface-container",
 };
 
-export default function Button({
+const Button = ( {
   children,
   variant = "primary",
   className = "",
   ...props
-}) {
+}) => {
   return (
     <motion.button
       whileTap={{ scale: 0.98 }}
@@ -23,3 +23,5 @@ export default function Button({
     </motion.button>
   );
 }
+
+export default Button

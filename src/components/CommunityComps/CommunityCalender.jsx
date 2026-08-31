@@ -31,9 +31,6 @@ const CommunityCalendar = () => {
     <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
-          <span className="font-label-caps text-label-caps text-primary uppercase tracking-widest">
-            Calendar
-          </span>
           <h2 className="font-headline-lg text-headline-lg text-on-surface mt-2">
             Upcoming Community Gatherings
           </h2>

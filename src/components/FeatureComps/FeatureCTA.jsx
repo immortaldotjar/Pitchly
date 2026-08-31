@@ -23,7 +23,7 @@ const FeatureCTA = () => {
         </p>
 
         <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
-          <Button variant="secondary" className="px-8 py-3 rounded-[14px] bg-on-primary text-primary border-transparent" onClick = {() => {navigate("/auth/signup")}}>
+          <Button variant="secondary" className="px-8 py-3 bg-on-primary text-primary border-transparent" onClick = {() => {navigate("/auth/signup")}}>
             Get Started Now
           </Button>
           <button className="font-body-sm text-body-sm text-on-primary font-semibold hover:underline">

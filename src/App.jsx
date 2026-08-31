@@ -24,6 +24,7 @@ import Settings from './pages/Settings'
 import AdminUsers from './pages/AdminUsers'
 import AdminStartups from './pages/AdminStartups'
 import AdminSettings from './pages/AdminSettings'
+import AdminApprovals from './pages/AdminApprovals'
 
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
         <Route index element={<AdminDashboard />} />
         <Route path="users" element={<AdminUsers />} />
         <Route path="startups" element={<AdminStartups/>} />
+        <Route path="approvals" element={<AdminApprovals/>} />
         <Route path="settings" element={<AdminSettings/>} />
         
       </Route>

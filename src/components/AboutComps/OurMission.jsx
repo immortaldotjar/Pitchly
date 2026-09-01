@@ -7,7 +7,7 @@ const stats = [
 
 const OurMission = () => {
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop">
+        <div className="py-section_gap px-margin_mobile md:px-margin_desktop">
             <div className="max-w-max_width mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -36,27 +36,8 @@ const OurMission = () => {
                         ))}
                     </div>
                 </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="rounded-2xl border border-outline-variant overflow-hidden bg-surface shadow-editorial"
-                >
-                    <div className="flex items-center gap-1.5 px-4 py-3 bg-surface-container-low border-b border-outline-variant/30">
-                        <span className="w-2.5 h-2.5 rounded-full bg-outline-variant" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-outline-variant" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-outline-variant" />
-                    </div>
-                    <img
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80"
-                        alt="Pitchly dashboard on a desktop monitor"
-                        className="w-full h-64 object-cover"
-                    />
-                </motion.div>
             </div>
-        </section>
+        </div>
     );
 };
 

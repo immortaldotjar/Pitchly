@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
 import Button from "../Button";
 import featureHeroBg from "../../assets/featureHeroBg.webp"
+import { useNavigate } from "react-router";
+const FeatureHero = () => {
+  const navigate = useNavigate()
 
-export default function FeatureHero() {
   return (
-    <section className="pt-20 pb-16 px-margin_mobile md:px-margin_desktop text-center bg-bottom bg-no-repeat bg-cover" style={{backgroundImage : `url(${featureHeroBg})`}}>
+    <div className="pt-20 pb-20 px-margin_mobile md:px-margin_desktop text-center bg-bottom bg-no-repeat bg-cover" style={{ backgroundImage: `url(${featureHeroBg})` }}>
       <div className="max-w-3xl mx-auto flex flex-col items-center gap-6">
 
         <motion.h1
@@ -32,14 +34,13 @@ export default function FeatureHero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap justify-center gap-4 pt-2"
         >
-          <Button variant="primary" className="px-8 py-3 rounded-[14px]">
-            Create Startup
-          </Button>
-          <Button variant="secondary" className="px-8 py-3 rounded-[14px]">
+          <Button className="px-8 py-3" onClick={() => { navigate("/auth/signup") }}>
             Explore Startups
           </Button>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }
+
+export default FeatureHero

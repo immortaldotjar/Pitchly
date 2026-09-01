@@ -25,7 +25,7 @@ const pillars = [
 
 const PillarsGrid = () => {
     return (
-        <section className="pb-section_gap px-margin_mobile md:px-margin_desktop">
+        <div className="pb-section_gap px-margin_mobile md:px-margin_desktop">
             <div className="max-w-max_width mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {pillars.map((pillar, i) => (
                     <motion.div
@@ -42,7 +42,7 @@ const PillarsGrid = () => {
                     </motion.div>
                 ))}
             </div>
-        </section>
+        </div>
     );
 };
 

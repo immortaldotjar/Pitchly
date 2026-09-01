@@ -22,7 +22,7 @@ const Stories = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.5 }}
-                        className="bg-surface border border-outline-variant rounded-2xl overflow-hidden flex flex-col"
+                        className="bg-surface border border-outline-variant rounded-xl overflow-hidden flex flex-col"
                     >
                         <div className="h-56 overflow-hidden">
                             <img
@@ -58,7 +58,7 @@ const Stories = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="bg-surface border border-outline-variant rounded-2xl p-6 flex-1 flex flex-col gap-4"
+                            className="bg-surface border border-outline-variant rounded-xl p-6 flex-1 flex flex-col gap-4"
                         >
                             <div className="flex items-center gap-3">
                                 <img
@@ -85,7 +85,7 @@ const Stories = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-primary text-on-primary rounded-2xl p-6 flex-1 flex flex-col gap-4"
+                            className="bg-primary text-on-primary rounded-xl p-6 flex-1 flex flex-col gap-4"
                         >
                             <div className="flex items-center gap-3">
                                 <img

@@ -31,7 +31,7 @@ const milestones = [
 
 const JourneyTimeline = () => {
     return (
-        <section className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-low">
+        <div className="py-section_gap px-margin_mobile md:px-margin_desktop bg-surface-container-low">
             <div className="max-w-2xl mx-auto">
                 <h2 className="font-headline-lg text-headline-lg text-on-surface text-center mb-16">
                     The Journey So Far
@@ -68,7 +68,7 @@ const JourneyTimeline = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

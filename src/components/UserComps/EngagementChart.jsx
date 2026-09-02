@@ -38,15 +38,15 @@ const chartOptions = {
 
 const EngagementChart = () => {
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl p-6 lg:col-span-2">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 lg:col-span-2">
             <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Investor Engagement</h4>
             <p className="font-body-sm text-body-sm text-on-surface-variant mb-6">Click-through and session length this week</p>
 
-            <div className="h-48">
+            {/* <div className="h-48">
                 <Chart options={chartOptions} containerProps={{ style: { width: "100%", height: "100%" } }}>
                     <HistogramSeries data={data} options={{ priceLineVisible: false, lastValueVisible: false }} />
                 </Chart>
-            </div>
+            </div> */}
         </div>
     )
 }

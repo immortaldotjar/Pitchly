@@ -1,12 +1,15 @@
-import { MdGridView, MdGroup, MdRocketLaunch, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout, MdPeople, MdFileUpload, MdNotifications ,MdExplore } from "react-icons/md"
-
+import { MdOutlineSpaceDashboard , MdGroup, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout, MdPeople, MdFileUpload, MdNotifications } from "react-icons/md"
+import { IoRocketOutline } from "react-icons/io5";
+import { FaRegCompass } from "react-icons/fa6";
+import { PiPresentationChart } from "react-icons/pi";
+import { RxPeople } from "react-icons/rx";
 export const adminSidebarProps = {
     brandTitle: "Pitchly",
     brandSubtitle: "Admin Console",
     navItems: [
-        { icon: MdGridView, label: "Dashboard", path: "/admin" },
+        { icon: MdOutlineSpaceDashboard , label: "Dashboard", path: "/admin" },
         { icon: MdGroup, label: "Users", path: "/admin/users" },
-        { icon: MdRocketLaunch, label: "Startups", path: "/admin/startups" },
+        { icon: IoRocketOutline, label: "Startups", path: "/admin/startups" },
         { icon: MdVerifiedUser, label: "Approvals", path: "/admin/approvals" },
         { icon: MdBarChart, label: "Reports", path: "/admin/reports" },
         { icon: MdSettings, label: "Settings", path: "/admin/settings" },
@@ -27,11 +30,11 @@ export const userSidebarProps = {
     brandTitle: "Pitchly",
     brandSubtitle: "Premium Network",
     navItems: [
-        { icon: MdGridView, label: "Dashboard", path: "/dashboard" },
-        { icon: MdRocketLaunch, label: "My Startup", path: "/dashboard/startup" },
-        { icon: MdExplore, label: "Discover", path: "/dashboard/discover" },
-        { icon: MdPeople, label: "Networking", path: "/dashboard/networking" },
-        { icon: MdFileUpload, label: "Pitch Deck", path: "/dashboard/pitch-deck" },
+        { icon: MdOutlineSpaceDashboard , label: "Dashboard", path: "/dashboard" },
+        { icon: IoRocketOutline, label: "My Startup", path: "/dashboard/startup" },
+        { icon: FaRegCompass, label: "Discover", path: "/dashboard/discover" },
+        { icon: RxPeople, label: "Networking", path: "/dashboard/networking" },
+        { icon: PiPresentationChart, label: "Pitch Deck", path: "/dashboard/pitch-deck" },
         { icon: MdSettings, label: "Settings", path: "/dashboard/settings" },
     ],
     quickAction: { label: "New Pitch", icon: MdAdd, onClick: () => { } },

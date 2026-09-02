@@ -4,6 +4,7 @@ import EngagementChart from "../components/UserComps/EngagementChart"
 import ProfileChecklist from "../components/UserComps/ProfileChecklist"
 import UpcomingMeetings from "../components/UserComps/UpcomingMeetings"
 import QuickActions from "../components/UserComps/QuickActions"
+import Button from "../components/Button"
 
 const UserDashboard = () => {
     return (
@@ -16,12 +17,10 @@ const UserDashboard = () => {
                     </p>
                 </div>
 
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-on-primary font-body-sm text-[13px] font-bold">
-                    <MdEdit size={16} /> Edit Startup
-                </button>
+                <Button className="flex items-center gap-2 text-xs"><MdEdit size={14} /> Edit Startup</Button>
             </div>
 
-            <StatsRow />
+            {/* <StatsRow /> */}
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <EngagementChart />

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import SignIn from "../components/AuthComps/SignIn";
 import SignUp from "../components/AuthComps/SignUp";
 
-export default function Auth() {
+const Auth = () => {
   const [mode, setMode] = useState("signin");
 
   return (
@@ -45,7 +45,7 @@ export default function Auth() {
             <span className="font-headline-md text-headline-md font-bold text-primary">Pitchly</span>
           </div>
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait"> 
             <motion.div
               key={mode}
               initial={{ opacity: 0, y: 8 }}
@@ -65,3 +65,5 @@ export default function Auth() {
     </main>
   );
 }
+
+export default Auth

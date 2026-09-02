@@ -12,7 +12,7 @@ const Topbar = ({ placeholder, navTabs, icons = defaultIcons, user }) => {
     const navigate = useNavigate()
 
     return (
-        <header className="h-20 flex items-center gap-6 px-6 border-b border-outline-variant bg-surface sticky top-0 z-10">
+        <header className="py-3 flex items-center gap-6 px-6 border-b border-outline-variant bg-surface sticky top-0 z-10">
             <div className="flex-1 relative max-w-md">
                 <MdSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" size={20} />
                 <input

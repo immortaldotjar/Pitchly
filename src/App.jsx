@@ -26,6 +26,7 @@ import AdminStartups from './pages/AdminStartups'
 import AdminSettings from './pages/AdminSettings'
 import AdminApprovals from './pages/AdminApprovals'
 import AdminReports from './pages/AdminReports'
+import ProtectedRoute from './routes/ProtectedRoute'
 
 
 const App = () => {
@@ -48,24 +49,26 @@ const App = () => {
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
       </Route>
 
-      <Route path="/admin" element={<DashboardLayout sidebarProps={adminSidebarProps} topbarProps={adminTopbarProps} />}>
-        <Route index element={<AdminDashboard />} />
-        <Route path="users" element={<AdminUsers />} />
-        <Route path="startups" element={<AdminStartups/>} />
-        <Route path="approvals" element={<AdminApprovals/>} />
-        <Route path="reports" element={<AdminReports/>} />
-        <Route path="settings" element={<AdminSettings/>} />
-        
+      <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
+        <Route path="/admin" element={<DashboardLayout sidebarProps={adminSidebarProps} topbarProps={adminTopbarProps} />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="startups" element={<AdminStartups />} />
+          <Route path="approvals" element={<AdminApprovals />} />
+          <Route path="reports" element={<AdminReports />} />
+          <Route path="settings" element={<AdminSettings />} />
+        </Route>
       </Route>
 
-      <Route path="/dashboard" element={<DashboardLayout sidebarProps={userSidebarProps} topbarProps={userTopbarProps} />}>
-        <Route index element={<UserDashboard />} />
-        <Route path="startup" element={<MyStartup/>} />
-        <Route path="discover" element={<Discover/>} />
-        <Route path="networking" element={<Networking />} />
-        <Route path="pitch-deck" element={<PitchDeck />} />
-        <Route path="settings" element={<Settings />} />
-
+      <Route element={<ProtectedRoute allowedRoles={["startup", "investor"]} />}>
+        <Route path="/dashboard" element={<DashboardLayout sidebarProps={userSidebarProps} topbarProps={userTopbarProps} />}>
+          <Route index element={<UserDashboard />} />
+          <Route path="startup" element={<MyStartup />} />
+          <Route path="discover" element={<Discover />} />
+          <Route path="networking" element={<Networking />} />
+          <Route path="pitch-deck" element={<PitchDeck />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Route>
 
       <Route path='*' element={<NotFound />} />

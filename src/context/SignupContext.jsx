@@ -1,12 +1,19 @@
 import { createContext, useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "./AuthContext"
 
 const SignupContext = createContext()
 
 const stepOrder = ["credentials", "role", "details"]
 
 const SignupProvider = ({ children }) => {
+    const navigate = useNavigate()
+    const { signup } = useAuth()
+
     const [step, setStep] = useState("credentials")
     const [role, setRole] = useState(null)
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const [startupData, setStartupData] = useState({
         startupName: "",
@@ -59,18 +66,34 @@ const SignupProvider = ({ children }) => {
         nextStep()
     }
 
-    const submitSignup = () => {
-        const payload = {
-            role,
-            ...(role === "startup" ? startupData : investorData),
-            ...credentials,
+    const submitSignup = async () => {
+        setError("")
+        setLoading(true)
+
+        try {
+            const payload = {
+                username: credentials.username,
+                email: credentials.email,
+                password: credentials.password,
+                role,
+                ...(role === "startup" ? startupData : investorData),
+            }
+
+            const user = await signup(payload)
+            navigate(user.role === "admin" ? "/admin" : "/dashboard")
+        } catch (err) {
+            console.error("SIGNUP FAILED:", err)
+            setError(err.response?.data?.message ?? "Something went wrong. Please try again.")
+
+        } finally {
+            setLoading(false)
         }
-        console.log(payload)
     }
 
     const resetSignup = () => {
         setStep("credentials")
         setRole(null)
+        setError("")
         setStartupData({ startupName: "", industry: "", stage: "", teamSize: "" })
         setInvestorData({ investorName: "", industries: [], stage: "", investmentRange: "" })
         setCredentials({ username: "", email: "", password: "", confirmPassword: "" })
@@ -82,6 +105,8 @@ const SignupProvider = ({ children }) => {
         startupData,
         investorData,
         credentials,
+        error,
+        loading,
         updateStartupData,
         updateInvestorData,
         updateCredentials,

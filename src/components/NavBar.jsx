@@ -81,6 +81,7 @@ export default function NavBar() {
                                 {link.label}
                             </li>
                         ))}
+
                         <li className="flex flex-col justify-center gap-4">
                             <Button variant="secondary" className="px-6 py-2 " onClick={() => { navigate("/auth/signin") }}>Sign In</Button>
                             <Button variant="primary" className="px-6 py-2" onClick={() => { navigate("/auth/signup") }}>Create Account</Button>

@@ -8,11 +8,11 @@ import { useSignup } from "../../context/SignupContext"
 
 const industries = ["SaaS", "AI", "FinTech", "HealthTech", "GreenTech", "EdTech", "Other"]
 const stages = ["Pre-Seed", "Seed", "Series A", "Series B+", "Growth"]
-const ranges = ["₹1L – ₹5L", "₹5L – ₹50L", "₹50L – ₹2Cr", "₹2Cr – ₹10Cr", "₹10Cr+"]
+const ranges = ["₹1L - ₹5L", "₹5L - ₹50L", "₹50L - ₹2Cr", "₹2Cr - ₹10Cr", "₹10Cr+"]
 
 const InvestorDetailsForm = () => {
 
-    const { investorData, updateInvestorData, toggleIndustry, submitSignup, prevStep } = useSignup()
+    const { investorData, updateInvestorData, toggleIndustry, submitSignup, prevStep, error, loading } = useSignup()
 
     return (
         <motion.div
@@ -68,7 +68,13 @@ const InvestorDetailsForm = () => {
                 />
             </div>
 
-            <Button variant="primary" children="Create Account" className="w-full" onClick={submitSignup} />
+            {error && (
+                <p className="font-body-sm text-body-sm text-error">{error}</p>
+            )}
+
+            <Button variant="primary" className="w-full" onClick={submitSignup} disabled={loading}>
+                {loading ? "Creating Account..." : "Create Account"}
+            </Button>
         </motion.div>
     )
 }

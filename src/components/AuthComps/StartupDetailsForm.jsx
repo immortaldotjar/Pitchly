@@ -7,11 +7,11 @@ import { useSignup } from "../../context/SignupContext"
 
 const industries = ["SaaS", "AI", "FinTech", "HealthTech", "GreenTech", "EdTech", "Other"]
 const stages = ["Idea", "Pre-Seed", "Seed", "Series A", "Series B+"]
-const teamSizes = ["1–5", "6–15", "16–50", "51–200", "200+"]
+const teamSizes = ["1-5", "6-15", "16-50", "51-200", "200+"]
 
 const StartupDetailsForm = () => {
 
-    const { startupData, updateStartupData, submitSignup, prevStep } = useSignup()
+    const { startupData, updateStartupData, submitSignup, prevStep, error, loading } = useSignup()
 
     return (
         <motion.div
@@ -69,7 +69,13 @@ const StartupDetailsForm = () => {
                 />
             </div>
 
-            <Button variant="primary" children="Create Account" className="w-full" onClick={submitSignup} />
+            {error && (
+                <p className="font-body-sm text-body-sm text-error">{error}</p>
+            )}
+
+            <Button variant="primary" className="w-full" onClick={submitSignup} disabled={loading}>
+                {loading ? "Creating Account..." : "Create Account"}
+            </Button>
         </motion.div>
     )
 }

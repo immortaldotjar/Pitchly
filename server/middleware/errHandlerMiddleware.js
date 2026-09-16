@@ -4,7 +4,7 @@ const notFound = (req, res, next) => {
     next(err)
 }
 
-const errHandler = (err, req, res, next) => {
+const errHandlerMiddleware = (err, req, res, next) => {
     console.error("SERVER ERROR:", err)
 
     const statusCode = res.statusCode !== 200 ? res.statusCode : 500
@@ -15,4 +15,4 @@ const errHandler = (err, req, res, next) => {
     })
 }
 
-export { errHandler, notFound }
+export { errHandlerMiddleware, notFound }

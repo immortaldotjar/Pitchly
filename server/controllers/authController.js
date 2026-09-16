@@ -1,5 +1,8 @@
 import User from "../models/Users.js";
 import token from "../utils/token.js";
+import Startup from "../models/Startup.js";
+import activityLog from "../utils/activityLog.js";
+
 
 const signup = async (req, res, next) => {
     try {
@@ -16,6 +19,14 @@ const signup = async (req, res, next) => {
         }
 
         const user = await User.create({ username, email, password, role })
+
+        if(role === "startup"){
+            const {startupName ,industry ,stage,teamSize } = req.body
+
+            await Startup.create({owner : user._id ,startupName , stage ,teamSize})
+        }
+        await activityLog(user._id, "user_joined", `${user.username} joined Pitchly as a ${role}.`)
+
         const genToken = token(user._id)
 
         res.status(201).json({

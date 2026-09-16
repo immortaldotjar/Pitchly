@@ -7,7 +7,7 @@ const startupSchema = new mongoose.Schema(
             ref : "User",
             required : true
         },
-        startipName : {
+        startupName : {
             type : String,
             required : true,
             trim : true,

@@ -1,12 +1,19 @@
-const meetings = [
-    { title: "Series A Deep Dive", withWhom: "Foundry Partners", date: "Oct 12, 2024", time: "10:30 AM • Zoom" },
-    { title: "Networking Mixer", withWhom: "SF Founders Collective", date: "Oct 14, 2024", time: "06:00 PM • San Francisco" },
-    { title: "Mentorship Session", withWhom: "James H. • Vertex Alpha", date: "Oct 18, 2024", time: "02:00 PM • Zoom" },
-]
+import { useState, useEffect } from "react"
+import { getMyMeetingsReq } from "../../api/meetingApi"
 
 const UpcomingMeetings = () => {
+
+    const [meetings, setMeetings] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getMyMeetingsReq()
+            .then(({ meetings }) => setMeetings(meetings))
+            .finally(() => setLoading(false))
+    }, [])
+
     return (
-        <div className="bg-surface border border-outline-variant rounded-xl overflow-hidden">
+        <div className="bg-surface border border-outline-variant rounded-2xl overflow-hidden">
             <div className="flex items-center justify-between p-6 pb-4">
                 <div>
                     <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Upcoming Meetings</h4>
@@ -26,21 +33,31 @@ const UpcomingMeetings = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {meetings.map((meeting) => (
-                            <tr key={meeting.title} className="border-t border-outline-variant/30">
-                                <td className="px-6 py-4 font-body-sm text-body-sm font-bold text-on-surface">{meeting.title}</td>
-                                <td className="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">{meeting.withWhom}</td>
-                                <td className="px-6 py-4">
-                                    <p className="font-body-sm text-body-sm text-on-surface">{meeting.date}</p>
-                                    <p className="font-body-sm text-[11px] text-on-surface-variant">{meeting.time}</p>
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <button className="px-4 py-1.5 rounded-lg bg-primary text-on-primary font-body-sm text-[11px] font-bold">
-                                        Join
-                                    </button>
-                                </td>
+                        {loading ? (
+                            <tr>
+                                <td colSpan={4} className="px-6 py-8 text-center font-body-sm text-body-sm text-on-surface-variant">Loading...</td>
                             </tr>
-                        ))}
+                        ) : meetings.length === 0 ? (
+                            <tr>
+                                <td colSpan={4} className="px-6 py-8 text-center font-body-sm text-body-sm text-on-surface-variant">No upcoming meetings scheduled yet.</td>
+                            </tr>
+                        ) : (
+                            meetings.map((meeting) => (
+                                <tr key={meeting._id} className="border-t border-outline-variant/30">
+                                    <td className="px-6 py-4 font-body-sm text-body-sm font-bold text-on-surface">{meeting.title}</td>
+                                    <td className="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">{meeting.withWhom}</td>
+                                    <td className="px-6 py-4">
+                                        <p className="font-body-sm text-body-sm text-on-surface">{new Date(meeting.date).toLocaleDateString()}</p>
+                                        <p className="font-body-sm text-[11px] text-on-surface-variant">{meeting.location}</p>
+                                    </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <button className="px-4 py-1.5 rounded-lg bg-primary text-on-primary font-body-sm text-[11px] font-bold">
+                                            Join
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
             </div>

@@ -24,9 +24,9 @@ app.use(helmet())
 app.use(express.json())
 
 app.use("/api/auth", authRoute)
-app.use("/api/auth", startupRoute)
-app.use("/api/auth", meetingRoute)
-app.use("/api/auth", activityRoute)
+app.use("/api/startups", startupRoute)
+app.use("/api/meetings", meetingRoute)
+app.use("/api/activity", activityRoute)
 
 app.use(notFound)
 app.use(errHandlerMiddleware)

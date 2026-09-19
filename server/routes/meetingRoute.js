@@ -7,6 +7,6 @@ import { getMyMeetings, createMeeting } from "../controllers/meetingController.j
 const meetingRoute = express.Router()
 
 meetingRoute.get("/me", protectMiddleware, getMyMeetings)
-meetingRoute.get("/", protectMiddleware, createMeeting)
+meetingRoute.post("/", protectMiddleware, createMeeting)
 
 export default meetingRoute

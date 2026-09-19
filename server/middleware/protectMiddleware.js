@@ -10,7 +10,7 @@ const protectMiddleware = async (req, res, next) => {
             throw new Error("Not authorized!")
         }
 
-        const tokenValue = authHeader.spliy(" ")[1]
+        const tokenValue = authHeader.split(" ")[1]
         const decodedToken = jwt.verify(tokenValue, process.env.JWT_SECRET)
 
         req.user = await User.findById(decodedToken.id)

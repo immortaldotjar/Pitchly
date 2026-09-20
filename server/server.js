@@ -9,6 +9,7 @@ import startupRoute from "./routes/startupRoute.js"
 import meetingRoute from "./routes/meetingRoute.js"
 import activityRoute from "./routes/activityRoute.js"
 import investorRoute  from "./routes/investorRoute.js"
+import statsRoute from "./routes/statsRoute.js"
 
 
 dotenv.config()
@@ -31,6 +32,7 @@ app.use("/api/startups", startupRoute)
 app.use("/api/meetings", meetingRoute)
 app.use("/api/activity", activityRoute)
 app.use("/api/investors", activityRoute)
+app.use("/api/stats", statsRoute)
 
 app.use(notFound)
 app.use(errHandlerMiddleware)

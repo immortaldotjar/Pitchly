@@ -8,6 +8,9 @@ import { notFound, errHandlerMiddleware } from "./middleware/errHandlerMiddlewar
 import startupRoute from "./routes/startupRoute.js"
 import meetingRoute from "./routes/meetingRoute.js"
 import activityRoute from "./routes/activityRoute.js"
+import investorRoute  from "./routes/investorRoute.js"
+
+
 dotenv.config()
 db()
 
@@ -27,6 +30,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/startups", startupRoute)
 app.use("/api/meetings", meetingRoute)
 app.use("/api/activity", activityRoute)
+app.use("/api/investors", activityRoute)
 
 app.use(notFound)
 app.use(errHandlerMiddleware)

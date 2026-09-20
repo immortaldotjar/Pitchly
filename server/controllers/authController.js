@@ -2,6 +2,7 @@ import User from "../models/Users.js";
 import token from "../utils/token.js";
 import Startup from "../models/Startup.js";
 import activityLog from "../utils/activityLog.js";
+import Investor from "../models/Investor.js";
 
 
 const signup = async (req, res, next) => {
@@ -20,17 +21,24 @@ const signup = async (req, res, next) => {
 
         const user = await User.create({ username, email, password, role })
 
-        if(role === "startup"){
-            const {startupName ,industry ,stage,teamSize } = req.body
-
-            await Startup.create({owner : user._id ,startupName , stage ,teamSize})
+        if (role === "startup") {
+            const { startupName, industry, stage, teamSize } = req.body
+            await Startup.create({ owner: user._id, startupName, stage, teamSize })
+            await activityLog(user._id, "user joined", `${user.username} joined Pitchly as a ${role}.`)
         }
-        await activityLog(user._id, "user_joined", `${user.username} joined Pitchly as a ${role}.`)
+
+        if (role === "investor") {
+            const { investorName, industries, stage, investmentRange } = req.body
+            await Investor.create({ owner: user._id, investorName, stage, investmentRange })
+            await activityLog(user._id, "user joined", `${user.username} joined Pitchly as a ${role}.`)
+        }
+
+
 
         const genToken = token(user._id)
 
         res.status(201).json({
-            token : genToken,
+            token: genToken,
             user: {
                 id: user._id,
                 username: user.username,
@@ -72,7 +80,7 @@ const signin = async (req, res, next) => {
         const genToken = token(user._id)
 
         res.json({
-            token : genToken,
+            token: genToken,
             user: {
                 id: user._id,
                 username: user.username,
@@ -85,4 +93,39 @@ const signin = async (req, res, next) => {
     }
 }
 
-export { signup, signin }
+
+const getAllUsers = async (req, res, next) => {
+    try {
+        const users = (await User.find()).sort({ createdAt: -1 })
+
+        const usersWithProfiles = await Promise.all(
+            users.map(async (user) => {
+                let profile = null
+                if (user.role === "startup") {
+                    profile = await Startup.findOne({ owner: user._id })
+                }
+                if (user.role === "investor") {
+                    profile = await Startup.findOne({ owner: user._id })
+                }
+
+                return {
+                    id: user._id,
+                    username: user.username,
+                    email: user.email,
+                    role: user.role,
+                    startupName: profile?.startupName ?? null,
+                    investorName: profile?.investorName ?? null,
+                    status: profile?.status ?? "active",
+                    joined: user.createdAt,
+                }
+            })
+        )
+
+        res.json({ users: usersWithProfiles })
+
+    } catch (err) {
+        next(err)
+    }
+}
+
+export { signup, signin, getAllUsers }

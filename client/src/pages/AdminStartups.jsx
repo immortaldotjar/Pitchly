@@ -9,33 +9,48 @@ import ActionsMenu from "../components/AdminComps/ActionsMenu"
 import Pagination from "../components/AdminComps/Pagination"
 import { mockStartups, industryFilters, statusFilters, statusDotTone } from "../config/adminStartupsConfig"
 
+
+import { getAllStartupReq, updateStartupStatusReq } from "../api/startupApi"
 const PAGE_SIZE = 5
 
 const AdminStartups = () => {
 
-    const [startups, setStartups] = useState(mockStartups)
+    const [startups, setStartups] = useState([])
+    const [loading, setLoading] = useState(true)
     const [search, setSearch] = useState("")
     const [activeIndustry, setActiveIndustry] = useState("All")
     const [status, setStatus] = useState("All Statuses")
     const [selectedIds, setSelectedIds] = useState([])
     const [page, setPage] = useState(1)
 
+
     const filteredStartups = useMemo(() => {
         return startups.filter((startup) => {
             const matchesSearch =
-                startup.name.toLowerCase().includes(search.toLowerCase()) ||
-                startup.founder.toLowerCase().includes(search.toLowerCase())
+                startup.startupName.toLowerCase().includes(search.toLowerCase()) ||
+                (startup.owner?.username ?? "").toLowerCase().includes(search.toLowerCase())
             const matchesIndustry = activeIndustry === "All" || startup.industry === activeIndustry
             const matchesStatus = status === "All Statuses" || startup.status === status
             return matchesSearch && matchesIndustry && matchesStatus
         })
     }, [startups, search, activeIndustry, status])
 
+
+    const loadStartups = () => {
+        setLoading(true)
+        getAllStartupReq().then(({startups}) => setStartups(startups)).finally(() => setLoading(false))
+
+    }
+
     useEffect(() => {
         setPage(1)
         setSelectedIds([])
     }, [search, activeIndustry, status])
 
+    useEffect(() => {
+        loadStartups()
+    },[])
+    
     const pageCount = Math.ceil(filteredStartups.length / PAGE_SIZE)
     const visibleStartups = filteredStartups.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
@@ -49,19 +64,21 @@ const AdminStartups = () => {
         setSelectedIds(allSelected ? selectedIds.filter((id) => !visibleIds.includes(id)) : [...new Set([...selectedIds, ...visibleIds])])
     }
 
-    const handleApprove = (id) => {
-        setStartups((prev) => prev.map((startup) => startup.id === id ? { ...startup, status: "Active" } : startup))
+    const handleApprove = async (id) => {
+        await updateStartupStatusReq(id,"active")
+        loadStartups()
     }
 
-    const handleToggleSuspend = (id) => {
-        setStartups((prev) => prev.map((startup) =>
-            startup.id === id ? { ...startup, status: startup.status === "Suspended" ? "Active" : "Suspended" } : startup
-        ))
+    const handleToggleSuspend = async (id) => {
+        const target = startups.find((startup) => startup._id === id)
+        await updateStartupStatusReq(id,target.status === "suspended" ? "active" : "suspended")
+
+        loadStartups()
     }
 
-    const handleReject = (id) => {
-        setStartups((prev) => prev.map((startup) => startup.id === id ? { ...startup, status: "Rejected" } : startup))
-        setSelectedIds((prev) => prev.filter((item) => item !== id))
+    const handleReject = async (id) => {
+        await updateStartupStatusReq(id , "rejected")
+        loadStartups()
     }
 
     const columns = [

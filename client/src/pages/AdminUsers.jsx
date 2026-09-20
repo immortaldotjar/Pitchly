@@ -10,12 +10,17 @@ import ActionsMenu from "../components/AdminComps/ActionsMenu"
 import Pagination from "../components/AdminComps/Pagination"
 import { mockUsers, roleFilters, statusFilters, roleTone, statusDotTone } from "../config/adminUsersConfig"
 
+import { getAllUsersReq } from "../api/authApi"
+
 const PAGE_SIZE = 5
 
 const AdminUsers = () => {
 
-    const [users, setUsers] = useState(mockUsers)
+    const [users, setUsers] = useState([])
+
+    const [loading, setLoading] = useState(true)
     const [search, setSearch] = useState("")
+
     const [activeRole, setActiveRole] = useState("All")
     const [status, setStatus] = useState("All Statuses")
     const [selectedIds, setSelectedIds] = useState([])
@@ -31,6 +36,10 @@ const AdminUsers = () => {
             return matchesSearch && matchesRole && matchesStatus
         })
     }, [users, search, activeRole, status])
+
+    useEffect(() => {
+        getAllUsersReq().then(({ users }) => setUsers(users)).finally(() => setLoading(false))
+    },[])
 
     useEffect(() => {
         setPage(1)
@@ -85,7 +94,7 @@ const AdminUsers = () => {
             ),
         },
         { key: "status", label: "Status", render: (user) => <StatusBadge status={user.status} dotTone={statusDotTone} /> },
-        { key: "startup", label: "Startup", render: (user) => <span className="font-body-sm text-body-sm text-on-surface-variant">{user.startup ?? "—"}</span> },
+        { key: "startup", label: "Startup", render: (user) => <span className="font-body-sm text-body-sm text-on-surface-variant">{user.startupName ?? user.investorName ?? "—"}</span> },
         { key: "lastActive", label: "Last Active", render: (user) => <span className="font-body-sm text-body-sm text-on-surface-variant">{user.lastActive}</span> },
     ]
 

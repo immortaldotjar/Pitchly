@@ -9,5 +9,9 @@ const signInReq = async (data) => {
     const res = await axiosInstance.post("/auth/signin", data)
     return res.data
 }
+const getAllUsersReq = async () => {
+    const res = await axiosInstance.post("/auth/users", data)
+    return res.data
+}
 
-export { signInReq, signUpReq }
+export { signInReq, signUpReq, getAllUsersReq }

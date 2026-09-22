@@ -128,4 +128,38 @@ const getAllUsers = async (req, res, next) => {
     }
 }
 
-export { signup, signin, getAllUsers }
+const updateUserRole = async (req, res, next) => {
+    try {
+        const { role } = req.body
+        const allowedRoles = ["startup", "investor", "admin"]
+
+        if (!allowedRoles.includes(role)) {
+            res.status(400)
+            throw new Error("Invalid role!")
+        }
+
+        if (req.params.id === req.user._id.toString()) {
+            res.status(400)
+            throw new Error("You can't change the role!")
+
+
+        }
+
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            res.status(404)
+            throw new Error("User not Found")
+        }
+
+        user.role = role
+        await user.save()
+        res.json({ message: `${user.username} is now ${role}` })
+
+
+
+    } catch (err) {
+        next(err)
+    }
+}
+
+export { signup, signin, getAllUsers, updateUserRole }

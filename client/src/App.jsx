@@ -27,7 +27,7 @@ import AdminSettings from './pages/AdminSettings'
 import AdminApprovals from './pages/AdminApprovals'
 import AdminReports from './pages/AdminReports'
 import ProtectedRoute from './routes/ProtectedRoute'
-
+import AdminInvestors from './pages/AdminInvestors'
 
 const App = () => {
   return (
@@ -54,6 +54,7 @@ const App = () => {
           <Route index element={<AdminDashboard />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="startups" element={<AdminStartups />} />
+          <Route path="investors" element={<AdminInvestors />} />
           <Route path="approvals" element={<AdminApprovals />} />
           <Route path="reports" element={<AdminReports />} />
           <Route path="settings" element={<AdminSettings />} />

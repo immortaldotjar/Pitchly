@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react"
-import { MdPersonAdd, MdVisibility, MdBlock, MdCheckCircleOutline, MdDeleteOutline } from "react-icons/md"
+import { MdPersonAdd, MdVisibility, MdBlock, MdCheckCircleOutline, MdDeleteOutline, MdVerifiedUser } from "react-icons/md"
 import StatCard from "../components/StatCard"
 import { MdGroup, MdRocketLaunch, MdInsights } from "react-icons/md"
 import TableToolbar from "../components/AdminComps/TableToolbar"
@@ -10,7 +10,7 @@ import ActionsMenu from "../components/AdminComps/ActionsMenu"
 import Pagination from "../components/AdminComps/Pagination"
 import { mockUsers, roleFilters, statusFilters, roleTone, statusDotTone } from "../config/adminUsersConfig"
 
-import { getAllUsersReq } from "../api/authApi"
+import { getAllUsersReq, updateUserRoleReq } from "../api/authApi"
 
 const PAGE_SIZE = 5
 
@@ -157,6 +157,7 @@ const AdminUsers = () => {
                         <ActionsMenu
                             actions={[
                                 { label: "View Profile", icon: MdVisibility, onClick: () => console.log("view user", user.id) },
+                                { label: "Make Admin", icon: MdVerifiedUser, tone : "primary" ,visible : user.role !== "admin" ,onClick :async () => {updateUserRoleReq(user.id , "admin")}},
                                 { label: user.status === "Suspended" ? "Reactivate User" : "Suspend User", icon: user.status === "Suspended" ? MdCheckCircleOutline : MdBlock, onClick: () => handleToggleSuspend(user.id) },
                                 { label: "Delete User", icon: MdDeleteOutline, danger: true, onClick: () => handleDelete(user.id) },
                             ]}

@@ -14,4 +14,9 @@ const getAllUsersReq = async () => {
     return res.data
 }
 
-export { signInReq, signUpReq, getAllUsersReq }
+
+const updateUserRoleReq = async (id, role) => {
+    const res = await axiosInstance.patch(`/auth/users/${id}/role`, { role })
+}
+
+export { signInReq, signUpReq, getAllUsersReq ,updateUserRoleReq} 

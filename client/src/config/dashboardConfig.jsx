@@ -1,4 +1,4 @@
-import { MdOutlineSpaceDashboard , MdGroup, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout, MdPeople, MdFileUpload, MdNotifications } from "react-icons/md"
+import { MdOutlineSpaceDashboard , MdGroup, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout,MdInsights, MdNotifications } from "react-icons/md"
 import { IoRocketOutline } from "react-icons/io5";
 import { FaRegCompass } from "react-icons/fa6";
 import { PiPresentationChart } from "react-icons/pi";
@@ -10,6 +10,7 @@ export const adminSidebarProps = {
         { icon: MdOutlineSpaceDashboard , label: "Dashboard", path: "/admin" },
         { icon: MdGroup, label: "Users", path: "/admin/users" },
         { icon: IoRocketOutline, label: "Startups", path: "/admin/startups" },
+        { icon: MdInsights, label: "Investors", path: "/admin/investors" },
         { icon: MdVerifiedUser, label: "Approvals", path: "/admin/approvals" },
         { icon: MdBarChart, label: "Reports", path: "/admin/reports" },
         { icon: MdSettings, label: "Settings", path: "/admin/settings" },

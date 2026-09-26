@@ -8,7 +8,7 @@ import DataTable from "../components/AdminComps/DataTable"
 import StatusBadge from "../components/AdminComps/StatusBadge"
 import ActionsMenu from "../components/AdminComps/ActionsMenu"
 import Pagination from "../components/AdminComps/Pagination"
-import { mockUsers, roleFilters, statusFilters, roleTone, statusDotTone } from "../config/adminUsersConfig"
+import { roleFilters, statusFilters, roleTone, statusDotTone } from "../config/adminUsersConfig"
 
 import { getAllUsersReq, updateUserRoleReq } from "../api/authApi"
 
@@ -29,7 +29,7 @@ const AdminUsers = () => {
     const filteredUsers = useMemo(() => {
         return users.filter((user) => {
             const matchesSearch =
-                user.name.toLowerCase().includes(search.toLowerCase()) ||
+                user.username.toLowerCase().includes(search.toLowerCase()) ||
                 user.email.toLowerCase().includes(search.toLowerCase())
             const matchesRole = activeRole === "All" || user.role === activeRole
             const matchesStatus = status === "All Statuses" || user.status === status
@@ -39,7 +39,7 @@ const AdminUsers = () => {
 
     useEffect(() => {
         getAllUsersReq().then(({ users }) => setUsers(users)).finally(() => setLoading(false))
-    },[])
+    }, [])
 
     useEffect(() => {
         setPage(1)
@@ -76,9 +76,11 @@ const AdminUsers = () => {
             label: "User",
             render: (user) => (
                 <div className="flex items-center gap-3">
-                    <img src={user.avatar} alt={user.name} className="w-9 h-9 rounded-full object-cover" />
+                    <span className="w-9 h-9 rounded-full bg-primary/10 text-primary center font-bold text-body-sm shrink-0">
+                        {user.username.charAt(0).toUpperCase()}
+                    </span>
                     <div>
-                        <p className="font-body-sm text-body-sm font-bold text-on-surface">{user.name}</p>
+                        <p className="font-body-sm text-body-sm font-bold text-on-surface">{user.username}</p>
                         <p className="font-body-sm text-[11px] text-on-surface-variant">{user.email}</p>
                     </div>
                 </div>
@@ -157,7 +159,7 @@ const AdminUsers = () => {
                         <ActionsMenu
                             actions={[
                                 { label: "View Profile", icon: MdVisibility, onClick: () => console.log("view user", user.id) },
-                                { label: "Make Admin", icon: MdVerifiedUser, tone : "primary" ,visible : user.role !== "admin" ,onClick :async () => {updateUserRoleReq(user.id , "admin")}},
+                                { label: "Make Admin", icon: MdVerifiedUser, tone: "primary", visible: user.role !== "admin", onClick: async () => { await updateUserRoleReq(user.id, "admin"); getAllUsersReq().then(({ users }) => setUsers(users)) } },
                                 { label: user.status === "Suspended" ? "Reactivate User" : "Suspend User", icon: user.status === "Suspended" ? MdCheckCircleOutline : MdBlock, onClick: () => handleToggleSuspend(user.id) },
                                 { label: "Delete User", icon: MdDeleteOutline, danger: true, onClick: () => handleDelete(user.id) },
                             ]}

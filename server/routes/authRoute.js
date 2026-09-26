@@ -18,7 +18,7 @@ const authLimit = rateLimit({
 authRoute.post("/signup", authLimit, signup)
 authRoute.post("/signin", authLimit, signin)
 authRoute.get("/users", protectMiddleware,adminHandlerMiddleware, getAllUsers)
-authRoute.get("/users/:id/role", protectMiddleware, adminHandlerMiddleware, getAllUsers, updateUserRole)
+authRoute.patch("/users/:id/role", protectMiddleware, adminHandlerMiddleware, getAllUsers, updateUserRole)
 
 
 export default authRoute

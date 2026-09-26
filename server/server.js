@@ -31,7 +31,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/startups", startupRoute)
 app.use("/api/meetings", meetingRoute)
 app.use("/api/activity", activityRoute)
-app.use("/api/investors", activityRoute)
+app.use("/api/investors", investorRoute)
 app.use("/api/stats", statsRoute)
 
 app.use(notFound)

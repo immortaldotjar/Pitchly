@@ -2,7 +2,7 @@ import Meeting from "../models/Meeting.js"
 
 const getMyMeetings = async (req, res, next) => {
     try {
-        const meetings = await Meeting.find({ createdBy: req.user._id })
+        const meetings = await Meeting.find({ createdBy: req.user._id , date : {$gte : new Date() } })
             .sort({ date: 1 })
             .limit(5)
 
@@ -14,13 +14,15 @@ const getMyMeetings = async (req, res, next) => {
 
 const createMeeting = async (req, res, next) => {
     try {
-        const { title, withWhom, date, location } = req.body
+        const { title, withWhom, date ,joinLink , platform } = req.body
 
         const meeting = await Meeting.create({
             title,
             withWhom,
+            platform,
+            joinLink,
             date,
-            location,
+            
             createdBy: req.user._id,
         })
 

@@ -14,7 +14,16 @@ const meetingSchema = new mongoose.Schema(
             required: true
         },
         withWhom: String,
-        location: String,
+        
+        platform: {
+            type: String,
+            enum: ["Google Meet", "Zoom"],
+            required : true,
+        },
+        joinLink :{
+            type : String,
+            required : true,
+        },
         date: {
             type: Date,
             required: true,

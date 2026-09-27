@@ -3,10 +3,17 @@ import StatsRow from "../components/UserComps/StatsRow"
 import EngagementChart from "../components/UserComps/EngagementChart"
 import ProfileChecklist from "../components/UserComps/ProfileChecklist"
 import UpcomingMeetings from "../components/UserComps/UpcomingMeetings"
+import ScheduleMeeting from "../components/UserComps/ScheduleMeeting"
+
 import QuickActions from "../components/UserComps/QuickActions"
 import Button from "../components/Button"
+import { useState } from "react"
 
 const UserDashboard = () => {
+
+    const [meetingOpen, setMeetingOpen] = useState(false)
+    const [refreshKey, setRefreshKey] = useState(0)
+
     return (
         <>
             <div className="flex flex-wrap items-center justify-between gap-4">
@@ -20,14 +27,20 @@ const UserDashboard = () => {
                 <Button className="flex items-center gap-2 text-xs"><MdEdit size={14} /> Edit Startup</Button>
             </div>
 
-            {/* <StatsRow /> */}
-
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <EngagementChart />
                 <ProfileChecklist />
             </div>
 
-            <UpcomingMeetings />
+            <button onClick={() => setMeetingOpen(true)} className="...">Schedule Meeting</button>
+
+            <UpcomingMeetings refreshKey={refreshKey} />
+
+            <ScheduleMeeting
+                open={meetingOpen}
+                onClose={() => setMeetingOpen(false)}
+                onCreated={() => setRefreshKey((k) => k + 1)}
+            />
             <QuickActions />
         </>
     )

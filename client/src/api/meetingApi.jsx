@@ -6,4 +6,10 @@ const getMyMeetingsReq = async () => {
     return res.data
 }
 
-export { getMyMeetingsReq }
+
+const createMeetingReq = async (data) => {
+    const res = await axiosInstance.post("/meetings", data)
+    return res.data
+}
+
+export { getMyMeetingsReq , createMeetingReq}

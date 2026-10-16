@@ -29,7 +29,7 @@ const CredentialsForm = () => {
                 <Input
                     label={"Username"}
                     id={"Username"}
-                    placeholder={"Victor Doom"}
+                    placeholder={"adam"}
                     value={credentials.username}
                     onChange={(e) => updateCredentials({ username: e.target.value })}
                 />

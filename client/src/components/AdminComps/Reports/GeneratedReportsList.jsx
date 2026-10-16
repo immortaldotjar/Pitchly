@@ -7,7 +7,7 @@ const fileIcon = {
 
 const GeneratedReportsList = ({ reports, onDownload }) => {
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl p-6">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6">
             <div className="flex items-center justify-between mb-5">
                 <div>
                     <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Generated Reports</h4>

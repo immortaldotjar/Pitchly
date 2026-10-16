@@ -6,11 +6,8 @@ const StatCard = ({ icon: Icon, label, value, trend, badge, badgeTone }) => {
         excellent: "bg-primary/10 text-primary",
     }
 
-    const showLeftBorder = badgeTone === "critical" || badgeTone === "action"
-
     return (
-        <div className={`bg-surface border border-outline-variant rounded-2xl p-5 space-y-4 ${showLeftBorder ? `border-l-4 ${badgeTone === "critical" ? "border-l-error" : "border-l-tertiary"}` : ""
-            }`}>
+        <div className={`bg-surface border border-outline-variant rounded-xl p-5 space-y-4 `}>
             <div className="flex items-start justify-between">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary center">
                     <Icon size={20} />

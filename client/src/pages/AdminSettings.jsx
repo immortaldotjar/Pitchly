@@ -29,8 +29,8 @@ const AdminSettings = () => {
     return (
         <>
             <div>
-                <h1 className="font-headline-lg text-headline-lg text-on-surface">Admin Settings</h1>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">Manage your admin profile and account security.</p>
+                <h1 className="font-headline-lg text-headline-lg text-on-surface">Settings</h1>
+                
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">

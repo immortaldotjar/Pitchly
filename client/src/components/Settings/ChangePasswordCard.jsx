@@ -9,7 +9,7 @@ const ChangePasswordCard = ({ onUpdatePassword }) => {
     const handleChange = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl p-6 space-y-4">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 space-y-4">
             <h4 className="font-headline-md text-body-md font-bold text-on-surface">Change Password</h4>
 
             <Input

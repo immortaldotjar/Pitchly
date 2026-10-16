@@ -10,7 +10,7 @@ const ProfileForm = ({ profile, onSave }) => {
     const handleChange = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl p-6 space-y-6">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 space-y-6">
             <div className="flex items-center gap-4">
                 <img src={form.avatar} alt={form.fullName} className="w-16 h-16 rounded-full object-cover" />
                 <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-outline-variant font-body-sm text-body-sm font-semibold text-on-surface">

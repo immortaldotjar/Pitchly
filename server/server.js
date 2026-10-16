@@ -27,6 +27,10 @@ app.use(helmet())
 
 app.use(express.json())
 
+app.get("/", (req, res) => {
+  res.send("working!");
+});
+
 app.use("/api/auth", authRoute)
 app.use("/api/startups", startupRoute)
 app.use("/api/meetings", meetingRoute)

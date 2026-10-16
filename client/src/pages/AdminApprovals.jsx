@@ -124,7 +124,7 @@ const AdminApprovals = () => {
                 {stats.map((stat) => <StatCard key={stat.label} {...stat} />)}
             </div>
 
-            <div className="bg-surface border border-outline-variant rounded-2xl overflow-hidden">
+            <div className="bg-surface border border-outline-variant rounded-xl overflow-hidden">
                 <TableToolbar
                     search={search}
                     onSearchChange={setSearch}

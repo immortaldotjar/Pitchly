@@ -58,7 +58,7 @@ const getAllInvestors = async (req, res, next) => {
 
         const investors = await query
 
-        res.json({ investor })
+        res.json({ investors })
     } catch (err) {
         next(err)
     }

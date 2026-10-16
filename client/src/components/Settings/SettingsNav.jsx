@@ -1,6 +1,6 @@
 const SettingsNav = ({ tabs, active, onChange }) => {
     return (
-        <nav className="bg-surface border border-outline-variant rounded-2xl p-2 space-y-1 lg:sticky lg:top-24">
+        <nav className="bg-surface border border-outline-variant rounded-xl p-2 space-y-1 lg:sticky lg:top-24">
             {tabs.map((tab) => (
                 <button
                     key={tab.id}

@@ -23,7 +23,7 @@ const PendingVerifications = () => {
     }
 
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl overflow-hidden">
+        <div className="bg-surface border border-outline-variant rounded-xl overflow-hidden">
             <div className="flex items-center justify-between p-6 pb-4">
                 <div>
                     <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Pending Startup Verifications</h4>

@@ -1,4 +1,4 @@
-import { MdOutlineSpaceDashboard , MdGroup, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout,MdInsights, MdNotifications } from "react-icons/md"
+import { MdOutlineSpaceDashboard, MdGroup, MdVerifiedUser, MdBarChart, MdSettings, MdAdd, MdHelpOutline, MdLogout, MdInsights, MdNotifications } from "react-icons/md"
 import { IoRocketOutline } from "react-icons/io5";
 import { FaRegCompass } from "react-icons/fa6";
 import { PiPresentationChart } from "react-icons/pi";
@@ -7,7 +7,7 @@ export const adminSidebarProps = {
     brandTitle: "Pitchly",
     brandSubtitle: "Admin Console",
     navItems: [
-        { icon: MdOutlineSpaceDashboard , label: "Dashboard", path: "/admin" },
+        { icon: MdOutlineSpaceDashboard, label: "Dashboard", path: "/admin" },
         { icon: MdGroup, label: "Users", path: "/admin/users" },
         { icon: IoRocketOutline, label: "Startups", path: "/admin/startups" },
         { icon: MdInsights, label: "Investors", path: "/admin/investors" },
@@ -24,14 +24,14 @@ export const adminSidebarProps = {
 
 export const adminTopbarProps = {
     placeholder: "Search startups, founders, or investors...",
-    user: { name: "Admin User", role: "Super Admin", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" },
+    user: { name: "Admin", role: "Manager", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" },
 }
 
 export const userSidebarProps = {
     brandTitle: "Pitchly",
     brandSubtitle: "Premium Network",
     navItems: [
-        { icon: MdOutlineSpaceDashboard , label: "Dashboard", path: "/dashboard" },
+        { icon: MdOutlineSpaceDashboard, label: "Dashboard", path: "/dashboard" },
         { icon: IoRocketOutline, label: "My Startup", path: "/dashboard/startup" },
         { icon: FaRegCompass, label: "Discover", path: "/dashboard/discover" },
         { icon: RxPeople, label: "Networking", path: "/dashboard/networking" },
@@ -45,8 +45,10 @@ export const userSidebarProps = {
 }
 
 export const userTopbarProps = {
+
+
     placeholder: "Search network...",
     navTabs: [{ label: "Network", active: true }, { label: "Insights" }],
     icons: [{ icon: MdNotifications, badge: true }],
-    user: { name: "Alex Chen", role: "Founder @ Pitchly", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" },
+    user: { name: "hello", role: "Founder @ Pitchly", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" },
 }

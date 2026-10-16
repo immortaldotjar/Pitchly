@@ -35,7 +35,7 @@ const chartOptions = {
 
 const RevenueTrendChart = () => {
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl p-6 lg:col-span-2">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 lg:col-span-2">
             <div className="mb-6">
                 <h4 className="font-headline-md text-body-lg font-bold text-on-surface">Platform Revenue Trend</h4>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">Monthly recurring revenue, in thousands ($K)</p>

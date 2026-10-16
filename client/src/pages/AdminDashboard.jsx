@@ -16,10 +16,7 @@ const AdminDashboard = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center bg-surface-container-low border border-outline-variant rounded-lg p-1">
-                        <button className="px-3 py-1.5 rounded-md bg-surface font-body-sm text-[12px] font-bold text-on-surface shadow-sm">Last 30 Days</button>
-                        <button className="px-3 py-1.5 rounded-md font-body-sm text-[12px] font-semibold text-on-surface-variant">90 Days</button>
-                    </div>
+
                     <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-on-primary font-body-sm text-[13px] font-bold">
                         <MdFileDownload size={16} /> Export Report
                     </button>

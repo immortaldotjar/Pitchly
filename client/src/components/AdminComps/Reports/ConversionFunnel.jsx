@@ -3,7 +3,7 @@ import { funnelStages } from "../../../config/adminReportsConfig"
 
 const ConversionFunnel = () => {
     return (
-        <div className="bg-surface border border-outline-variant rounded-2xl p-6">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6">
             <h4 className="font-headline-md text-body-lg font-bold text-on-surface">User Conversion Funnel</h4>
             <p className="font-body-sm text-body-sm text-on-surface-variant mb-8">From signup to an active deal room, last 90 days</p>
 
